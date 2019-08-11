@@ -80,7 +80,7 @@ $db['default'] = array(
 	'password' => '4(VSXjp52@',
 	'database' => 'nzyporg_ciadb',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => 'ciadb',
+	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
