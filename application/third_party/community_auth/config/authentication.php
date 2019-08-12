@@ -178,7 +178,7 @@ $config['encrypt_all_cookies'] = TRUE;
 |
 */
 
-$config['allow_remember_me'] = FALSE;
+$config['allow_remember_me'] = TRUE;
 
 /*
 | -----------------------------------------------------------------

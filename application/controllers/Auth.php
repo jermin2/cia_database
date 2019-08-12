@@ -85,8 +85,8 @@ class Auth extends MY_Controller
 
 		$this->setup_login_form();
 
-		//$html = $this->load->view('examples/page_header', '', TRUE);
-		$html = $this->load->view('login/login_form', '', TRUE);
+		$html = $this->load->view('login/login_header', '', TRUE);
+		$html .= $this->load->view('login/login_form', '', TRUE);
 		//$html .= $this->load->view('examples/page_footer', '', TRUE);
 
 		echo $html;

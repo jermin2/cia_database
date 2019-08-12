@@ -1,15 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	     <meta charset = "utf-8"> 
-      <title>CodeIgniter View Example</title> 
-      <link rel = "stylesheet" type = "text/css" 
-         href = "<?php echo asset_url(); ?>css/style.css"> 
-      <script type = 'text/javascript' src = "<?php echo asset_url(); 
-         ?>js/sample.js"></script> 
-</head>
-<body>
-	<div class=login_page>
+
+<body class="text-center">
 
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -26,10 +16,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-if( ! isset( $optional_login ) )
-{
-	echo '<h1 class="login_heading">Church In Auckland</h1>';
-}
+
+	
+
 
 if( ! isset( $on_hold_message ) )
 {
@@ -58,22 +47,22 @@ if( ! isset( $on_hold_message ) )
 		';
 	}
 
-	echo form_open( $login_url, ['class' => 'std-form'] ); 
+	echo form_open( $login_url, ['class' => 'form-signin'] ); 
 ?>
 
 
 
-	<div class="center">
-
-		<label for="login_string" class="login_label">Username or Email</label>
+	<div>
+		<h1 class="h3 mb-3 font-weight-normal">Church In Auckland</h1>
+		<label for="login_string" class="sr-only">Username or Email</label>
 		<br />
-		<input type="text" name="login_string" id="login_string" class="login_input" autocomplete="off" maxlength="255" />
+		<input type="text" name="login_string" id="login_string" class="form-control" placeholder="Username or Email" required autofocus autocomplete="off" maxlength="25" />
 
 		<br />
 
-		<label for="login_pass" class="login_label">Password</label>
+		<label for="login_pass" class="sr-only">Password</label>
 		<br />
-		<input type="password" name="login_pass" id="login_pass" class="login_input password" <?php 
+		<input type="password" name="login_pass" id="login_pass" class="form-control password" placeholder="Password" <?php 
 			if( config_item('max_chars_for_password') > 0 )
 				echo 'maxlength="' . config_item('max_chars_for_password') . '"'; 
 		?> autocomplete="off" readonly="readonly" onfocus="this.removeAttribute('readonly');" />
@@ -83,12 +72,9 @@ if( ! isset( $on_hold_message ) )
 			if( config_item('allow_remember_me') )
 			{
 		?>
-
 			<br />
-
 			<label for="remember_me" class="form_label">Remember Me</label>
 			<input type="checkbox" id="remember_me" name="remember_me" value="yes" />
-
 		<?php
 			}
 		?>
@@ -103,7 +89,7 @@ if( ! isset( $on_hold_message ) )
 		</p>
 
 
-		<input type="submit" name="submit" value="Login" id="submit_button"  />
+		<input type="submit" class="btn btn-lg btn-primary btn-block" name="submit" value="Login" id="submit_button"  />
 
 	</div>
 </form>
@@ -140,6 +126,6 @@ if( ! isset( $on_hold_message ) )
 /* Location: /community_auth/views/examples/login_form.php */ 
 
 ?>
-</div>
+
 </body>
 </html>
