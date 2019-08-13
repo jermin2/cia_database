@@ -16,16 +16,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link        http://community-auth.com
  */
 
-
-	
-
+echo form_open( $login_url, ['class' => 'form-signin'] ); 
 
 if( ! isset( $on_hold_message ) )
 {
 	if( isset( $login_error_mesg ) )
 	{
 		echo '
-			<div style="border:1px solid red;">
+			<div class="h6 center" style="border:1px solid red; padding: 5px">
 				<p>
 					Login Error #' . $this->authentication->login_errors_count . '/' . config_item('max_allowed_attempts') . ': Invalid Username, Email Address, or Password.
 				</p>
@@ -39,7 +37,7 @@ if( ! isset( $on_hold_message ) )
 	if( $this->input->get(AUTH_LOGOUT_PARAM) )
 	{
 		echo '
-			<div style="border:1px solid green">
+			<div class="h6 center" style="border:1px solid green; padding: 5px">
 				<p>
 					You have successfully logged out.
 				</p>
@@ -47,10 +45,8 @@ if( ! isset( $on_hold_message ) )
 		';
 	}
 
-	echo form_open( $login_url, ['class' => 'form-signin'] ); 
+	
 ?>
-
-
 
 	<div>
 		<h1 class="h3 mb-3 font-weight-normal">Church In Auckland</h1>

@@ -22,7 +22,12 @@ class Welcome extends MY_Controller {
 	{
 		if( $this->require_role('admin') )
 		{
-			$this->load->view('welcome_message');
+			$data['title'] = 'Welcome Page';
+			$data['_view'] = 'welcome_message';
+			
+
+			$this->load->view('mainpage', $data);
+
 		}
 	}
 }
