@@ -18,6 +18,7 @@ class Person extends MY_Controller{
     {
         $data['people'] = $this->Person_model->get_all_people();
         
+				
         $data['_view'] = 'person/index';
         $this->load->view('mainpage',$data);
     }
@@ -46,6 +47,8 @@ class Person extends MY_Controller{
         }
         else
         {
+			$data['genders'] = array('Male', 'Female');
+			
 			$this->load->model('Age_group_model');
 			$data['all_age_groups'] = $this->Age_group_model->get_all_age_groups();
 
@@ -86,14 +89,16 @@ class Person extends MY_Controller{
             }
             else
             {
+				$data['genders'] = array('Male', 'Female');
+				
 				$this->load->model('Age_group_model');
 				$data['all_age_groups'] = $this->Age_group_model->get_all_age_groups();
 
 				$this->load->model('Hall_model');
 				$data['all_halls'] = $this->Hall_model->get_all_halls();
 
-                $data['_view'] = 'person/edit';
-                $this->load->view('mainpage',$data);
+				$data['_view'] = 'person/edit';
+				$this->load->view('mainpage',$data);
             }
         }
         else

@@ -24,8 +24,13 @@ class Person_model extends CI_Model
      */
     function get_all_people()
     {
-        $this->db->order_by('people_id', 'desc');
-        return $this->db->get('cia12_people')->result_array();
+				return $this->db->query('SELECT people_id, first_name, last_name, gender, cia12_age_group.age_group_name, email, hall_name, mobile
+													FROM cia12_people, cia12_age_group, cia12_halls
+													WHERE cia12_people.age_group_id = cia12_age_group.age_group_id')->result_array();
+
+
+        //$this->db->order_by('people_id', 'desc');
+        //return $this->db->get('cia12_people')->result_array();
     }
         
     /*

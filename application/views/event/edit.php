@@ -1,8 +1,8 @@
 <?php echo form_open('event/edit/'.$event['event_id'],array("class"=>"form-horizontal")); ?>
 
-	<div class="form-group">
-		<label for="event_type_id" class="col-md-4 control-label">Event Type</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="event_type_id" class="col-md-2 control-label">Event Type</label>
+		<div class="col-md-4">
 			<select name="event_type_id" class="form-control">
 				<option value="">select event_type</option>
 				<?php 
@@ -16,9 +16,9 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="category_id" class="col-md-4 control-label">Category</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="category_id" class="col-md-2 control-label">Category</label>
+		<div class="col-md-4">
 			<select name="category_id" class="form-control">
 				<option value="">select category</option>
 				<?php 
@@ -32,9 +32,9 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="hall" class="col-md-4 control-label">Hall</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="hall" class="col-md-2 control-label">Hall</label>
+		<div class="col-md-4">
 			<select name="hall" class="form-control">
 				<option value="">select hall</option>
 				<?php 
@@ -48,32 +48,32 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="name" class="col-md-4 control-label">Name</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="name" class="col-md-2 control-label">Name</label>
+		<div class="col-md-4">
 			<input type="text" name="name" value="<?php echo ($this->input->post('name') ? $this->input->post('name') : $event['name']); ?>" class="form-control" id="name" />
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="date" class="col-md-4 control-label">Date</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="date" class="col-md-2 control-label">Date</label>
+		<div class="col-md-4">
 			<input type="text" name="date" value="<?php echo ($this->input->post('date') ? $this->input->post('date') : $event['date']); ?>" class="form-control" id="date" />
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="location" class="col-md-4 control-label">Location</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="location" class="col-md-2 control-label">Location</label>
+		<div class="col-md-4">
 			<input type="text" name="location" value="<?php echo ($this->input->post('location') ? $this->input->post('location') : $event['location']); ?>" class="form-control" id="location" />
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="comments" class="col-md-4 control-label">Comments</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="comments" class="col-md-2 control-label">Comments</label>
+		<div class="col-md-4">
 			<input type="text" name="comments" value="<?php echo ($this->input->post('comments') ? $this->input->post('comments') : $event['comments']); ?>" class="form-control" id="comments" />
 		</div>
 	</div>
 	
-	<div class="form-group">
+	<div class="form-group row">
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Save</button>
         </div>

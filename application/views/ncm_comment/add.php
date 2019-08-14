@@ -1,8 +1,8 @@
 <?php echo form_open('ncm_comment/add',array("class"=>"form-horizontal")); ?>
 
-	<div class="form-group">
-		<label for="event_id" class="col-md-4 control-label">Event</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="event_id" class="col-md-2 control-label">Event</label>
+		<div class="col-md-4">
 			<select name="event_id" class="form-control">
 				<option value="">select event</option>
 				<?php 
@@ -16,26 +16,26 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="songs" class="col-md-4 control-label">Songs</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="songs" class="col-md-2 control-label">Songs</label>
+		<div class="col-md-4">
 			<input type="text" name="songs" value="<?php echo $this->input->post('songs'); ?>" class="form-control" id="songs" />
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="brief report" class="col-md-4 control-label">Brief Report</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="brief report" class="col-md-2 control-label">Brief Report</label>
+		<div class="col-md-4">
 			<input type="text" name="brief report" value="<?php echo $this->input->post('brief report'); ?>" class="form-control" id="brief report" />
 		</div>
 	</div>
-	<div class="form-group">
-		<label for="notes for improvements" class="col-md-4 control-label">Notes For Improvements</label>
-		<div class="col-md-8">
+	<div class="form-group row">
+		<label for="notes for improvements" class="col-md-2 control-label">Notes For Improvements</label>
+		<div class="col-md-4">
 			<input type="text" name="notes for improvements" value="<?php echo $this->input->post('notes for improvements'); ?>" class="form-control" id="notes for improvements" />
 		</div>
 	</div>
 	
-	<div class="form-group">
+	<div class="form-group row">
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Save</button>
         </div>
