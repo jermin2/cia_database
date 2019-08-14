@@ -16,7 +16,7 @@ class Hall_model extends CI_Model
      */
     function get_hall($hall_id)
     {
-        return $this->db->get_where('halls',array('hall_id'=>$hall_id))->row_array();
+        return $this->db->get_where('cia12_halls',array('hall_id'=>$hall_id))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Hall_model extends CI_Model
     function get_all_halls()
     {
         $this->db->order_by('hall_id', 'desc');
-        return $this->db->get('halls')->result_array();
+        return $this->db->get('cia12_halls')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Hall_model extends CI_Model
      */
     function add_hall($params)
     {
-        $this->db->insert('halls',$params);
+        $this->db->insert('cia12_halls',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Hall_model extends CI_Model
     function update_hall($hall_id,$params)
     {
         $this->db->where('hall_id',$hall_id);
-        return $this->db->update('halls',$params);
+        return $this->db->update('cia12_halls',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Hall_model extends CI_Model
      */
     function delete_hall($hall_id)
     {
-        return $this->db->delete('halls',array('hall_id'=>$hall_id));
+        return $this->db->delete('cia12_halls',array('hall_id'=>$hall_id));
     }
 }

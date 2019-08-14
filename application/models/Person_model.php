@@ -16,7 +16,7 @@ class Person_model extends CI_Model
      */
     function get_person($people_id)
     {
-        return $this->db->get_where('people',array('people_id'=>$people_id))->row_array();
+        return $this->db->get_where('cia12_people',array('people_id'=>$people_id))->row_array();
     }
         
     /*
@@ -25,7 +25,7 @@ class Person_model extends CI_Model
     function get_all_people()
     {
         $this->db->order_by('people_id', 'desc');
-        return $this->db->get('people')->result_array();
+        return $this->db->get('cia12_people')->result_array();
     }
         
     /*
@@ -33,7 +33,7 @@ class Person_model extends CI_Model
      */
     function add_person($params)
     {
-        $this->db->insert('people',$params);
+        $this->db->insert('cia12_people',$params);
         return $this->db->insert_id();
     }
     
@@ -43,7 +43,7 @@ class Person_model extends CI_Model
     function update_person($people_id,$params)
     {
         $this->db->where('people_id',$people_id);
-        return $this->db->update('people',$params);
+        return $this->db->update('cia12_people',$params);
     }
     
     /*
@@ -51,6 +51,6 @@ class Person_model extends CI_Model
      */
     function delete_person($people_id)
     {
-        return $this->db->delete('people',array('people_id'=>$people_id));
+        return $this->db->delete('cia12_people',array('people_id'=>$people_id));
     }
 }

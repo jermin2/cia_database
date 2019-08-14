@@ -18,15 +18,22 @@
 			<li class="active nav-item">
 				<a href="#eventSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Events</a>
 				<ul class="nav collapse list-unstyled" id="eventSubmenu">
-					<li><a class="nav-link" href="/database/pages/create">&nbsp; Create New</a></li>
-					<li><a class="nav-link" href="/database/pages">&nbsp; View All</a></li>
+					<li><a class="nav-link" href="/event/add">&nbsp; Create New</a></li>
+					<li><a class="nav-link" href="/event/index">&nbsp; View All</a></li>
+				</ul>
+			</li>
+			<li class="active nav-item">
+				<a href="#attendSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Attendence</a>
+				<ul class="nav collapse list-unstyled" id="attendSubmenu">
+					<li><a class="nav-link" href="/Event_person/add">&nbsp; Create New</a></li>
+					<li><a class="nav-link" href="/Event_person/index">&nbsp; View All</a></li>
 				</ul>
 			</li>
 			<li class="active nav-item">
 				<a href="#hallSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Hall</a>
 				<ul class="nav collapse list-unstyled" id="hallSubmenu">
-					<li><a class="nav-link" href="/database/pages/create">&nbsp; Create New</a></li>
-					<li><a class="nav-link" href="/database/pages">&nbsp; View All</a></li>
+					<li><a class="nav-link" href="/hall/add">&nbsp; Create New</a></li>
+					<li><a class="nav-link" href="/hall/index">&nbsp; View All</a></li>
 				</ul>
 			</li>
 			<li class="nav-item">

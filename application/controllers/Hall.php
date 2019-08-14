@@ -19,7 +19,7 @@ class Hall extends MY_Controller{
         $data['halls'] = $this->Hall_model->get_all_halls();
         
         $data['_view'] = 'hall/index';
-        $this->load->view('layouts/main',$data);
+        $this->load->view('mainpage',$data);
     }
 
     /*
@@ -30,6 +30,7 @@ class Hall extends MY_Controller{
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
+				'hall_name' => $this->input->post('hall_name'),
             );
             
             $hall_id = $this->Hall_model->add_hall($params);
@@ -38,7 +39,7 @@ class Hall extends MY_Controller{
         else
         {            
             $data['_view'] = 'hall/add';
-            $this->load->view('layouts/main',$data);
+            $this->load->view('mainpage',$data);
         }
     }  
 
@@ -55,6 +56,7 @@ class Hall extends MY_Controller{
             if(isset($_POST) && count($_POST) > 0)     
             {   
                 $params = array(
+					'hall_name' => $this->input->post('hall_name'),
                 );
 
                 $this->Hall_model->update_hall($hall_id,$params);            
@@ -63,7 +65,7 @@ class Hall extends MY_Controller{
             else
             {
                 $data['_view'] = 'hall/edit';
-                $this->load->view('layouts/main',$data);
+                $this->load->view('mainpage',$data);
             }
         }
         else

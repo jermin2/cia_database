@@ -16,29 +16,25 @@ class Person extends MY_Controller{
      */
     function index()
     {
-			if( $this->require_role('admin') )
-			{
         $data['people'] = $this->Person_model->get_all_people();
         
         $data['_view'] = 'person/index';
         $this->load->view('mainpage',$data);
-			}
     }
 
     /*
      * Adding a new person
      */
     function add()
-    {
-			if( $this->require_role('admin') )
-			{			
+    {   
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
-				'gender' => $this->input->post('gender'),
+				'age_group_id' => $this->input->post('age_group_id'),
 				'hall' => $this->input->post('hall'),
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
+				'gender' => $this->input->post('gender'),
 				'dob' => $this->input->post('dob'),
 				'email' => $this->input->post('email'),
 				'mobile' => $this->input->post('mobile'),
@@ -50,13 +46,15 @@ class Person extends MY_Controller{
         }
         else
         {
-					$this->load->model('Hall_model');
-					$data['all_halls'] = $this->Hall_model->get_all_halls();
+			$this->load->model('Age_group_model');
+			$data['all_age_groups'] = $this->Age_group_model->get_all_age_groups();
+
+			$this->load->model('Hall_model');
+			$data['all_halls'] = $this->Hall_model->get_all_halls();
             
-					$data['_view'] = 'person/add';
-					$this->load->view('mainpage',$data);
+            $data['_view'] = 'person/add';
+            $this->load->view('mainpage',$data);
         }
-			}
     }  
 
     /*
@@ -64,8 +62,6 @@ class Person extends MY_Controller{
      */
     function edit($people_id)
     {   
-			if( $this->require_role('admin') )
-			{
         // check if the person exists before trying to edit it
         $data['person'] = $this->Person_model->get_person($people_id);
         
@@ -74,10 +70,11 @@ class Person extends MY_Controller{
             if(isset($_POST) && count($_POST) > 0)     
             {   
                 $params = array(
-					'gender' => $this->input->post('gender'),
+					'age_group_id' => $this->input->post('age_group_id'),
 					'hall' => $this->input->post('hall'),
 					'first_name' => $this->input->post('first_name'),
 					'last_name' => $this->input->post('last_name'),
+					'gender' => $this->input->post('gender'),
 					'dob' => $this->input->post('dob'),
 					'email' => $this->input->post('email'),
 					'mobile' => $this->input->post('mobile'),
@@ -89,17 +86,18 @@ class Person extends MY_Controller{
             }
             else
             {
-							$this->load->model('Hall_model');
-							$data['all_halls'] = $this->Hall_model->get_all_halls();
+				$this->load->model('Age_group_model');
+				$data['all_age_groups'] = $this->Age_group_model->get_all_age_groups();
 
-							$data['_view'] = 'person/edit';
-							
-							$this->load->view('mainpage',$data);
+				$this->load->model('Hall_model');
+				$data['all_halls'] = $this->Hall_model->get_all_halls();
+
+                $data['_view'] = 'person/edit';
+                $this->load->view('mainpage',$data);
             }
         }
         else
             show_error('The person you are trying to edit does not exist.');
-			}
     } 
 
     /*
@@ -107,8 +105,6 @@ class Person extends MY_Controller{
      */
     function remove($people_id)
     {
-			if( $this->require_role('admin') )
-			{
         $person = $this->Person_model->get_person($people_id);
 
         // check if the person exists before trying to delete it
@@ -119,7 +115,6 @@ class Person extends MY_Controller{
         }
         else
             show_error('The person you are trying to delete does not exist.');
-			}
     }
     
 }
