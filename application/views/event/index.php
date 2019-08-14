@@ -17,9 +17,9 @@
 	<?php foreach($events as $c){ ?>
     <tr>
 		<td><?php echo $c['event_id']; ?></td>
-		<td><?php echo $c['event_type_id']; ?></td>
-		<td><?php echo $c['category_id']; ?></td>
-		<td><?php echo $c['hall']; ?></td>
+		<td><?php echo $c['event_type']; ?></td>
+		<td><?php echo $c['category_name']; ?></td>
+		<td><?php echo $c['hall_name']; ?></td>
 		<td><?php echo $c['name']; ?></td>
 		<td><?php echo $c['date']; ?></td>
 		<td><?php echo $c['location']; ?></td>

@@ -18,7 +18,7 @@
 		<label for="gender" class="col-md-2 control-label">Gender</label>
 		<div class="col-md-4">
 			<select name="gender" class="form-control">
-				<option value="">select gender</option>
+				<option value="">Gender</option>
 				<?php 
 				foreach($genders as $gender)
 				{
@@ -40,7 +40,7 @@
 		<label for="age_group_id" class="col-md-2 control-label">Age Group</label>
 		<div class="col-md-4">
 			<select name="age_group_id" class="form-control">
-				<option value="">select age_group</option>
+				<option value="">select age group</option>
 				<?php 
 				foreach($all_age_groups as $age_group)
 				{

@@ -10,7 +10,7 @@
 				{
 					$selected = ($person['people_id'] == $this->input->post('people_id')) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$person['people_id'].'" '.$selected.'>'.$person['people_id'].'</option>';
+					echo '<option value="'.$person['people_id'].'" '.$selected.'>'.$person['first_name'].' '.$person['last_name'].'</option>';
 				} 
 				?>
 			</select>
@@ -27,7 +27,7 @@
 				{
 					$selected = ($event['event_id'] == $this->input->post('events_id')) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$event['event_id'].'" '.$selected.'>'.$event['event_id'].'</option>';
+					echo '<option value="'.$event['event_id'].'" '.$selected.'>'.$event['name'].'</option>';
 				} 
 				?>
 			</select>

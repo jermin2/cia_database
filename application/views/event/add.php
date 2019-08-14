@@ -4,13 +4,13 @@
 		<label for="event_type_id" class="col-md-2 control-label">Event Type</label>
 		<div class="col-md-4">
 			<select name="event_type_id" class="form-control">
-				<option value="">select event_type</option>
+				<option value="">select event type</option>
 				<?php 
 				foreach($all_event_types as $event_type)
 				{
 					$selected = ($event_type['event_type_id'] == $this->input->post('event_type_id')) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$event_type['event_type_id'].'" '.$selected.'>'.$event_type['event_type_id'].'</option>';
+					echo '<option value="'.$event_type['event_type_id'].'" '.$selected.'>'.$event_type['event_type'].'</option>';
 				} 
 				?>
 			</select>
@@ -26,7 +26,7 @@
 				{
 					$selected = ($category['category_id'] == $this->input->post('category_id')) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$category['category_id'].'" '.$selected.'>'.$category['category_id'].'</option>';
+					echo '<option value="'.$category['category_id'].'" '.$selected.'>'.$category['category_name'].'</option>';
 				} 
 				?>
 			</select>
@@ -42,7 +42,7 @@
 				{
 					$selected = ($hall['hall_id'] == $this->input->post('hall')) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$hall['hall_id'].'" '.$selected.'>'.$hall['hall_id'].'</option>';
+					echo '<option value="'.$hall['hall_id'].'" '.$selected.'>'.$hall['hall_name'].'</option>';
 				} 
 				?>
 			</select>
