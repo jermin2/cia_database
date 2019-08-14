@@ -14,9 +14,9 @@ class Event_person_model extends CI_Model
     /*
      * Get event_person by id
      */
-    function get_event_person($id)
+    function get_event_person($event_people_id)
     {
-        return $this->db->get_where('cia12_event_people',array('id'=>$id))->row_array();
+        return $this->db->get_where('cia12_event_people',array('event_people_id'=>$event_people_id))->row_array();
     }
         
     /*
@@ -24,8 +24,12 @@ class Event_person_model extends CI_Model
      */
     function get_all_event_people()
     {
-        $this->db->order_by('id', 'desc');
-        return $this->db->get('cia12_event_people')->result_array();
+							return $this->db->query('SELECT event_people_id, cia12_people.people_id, cia12_events.event_id, registered, attended, paid, comment
+				FROM cia12_event_people, cia12_events, cia12_people, cia12_halls
+				WHERE cia12_event_people.people_id = cia12_people.people_id 
+				AND cia12_event_people.event_id = cia12_events.event_id
+				AND cia12_events.hall_id = cia12_halls.hall_id;')->result_array();
+				
     }
         
     /*
@@ -42,7 +46,7 @@ class Event_person_model extends CI_Model
      */
     function update_event_person($id,$params)
     {
-        $this->db->where('id',$id);
+        $this->db->where('event_people_id',$id);
         return $this->db->update('cia12_event_people',$params);
     }
     
@@ -51,6 +55,6 @@ class Event_person_model extends CI_Model
      */
     function delete_event_person($id)
     {
-        return $this->db->delete('cia12_event_people',array('id'=>$id));
+        return $this->db->delete('cia12_event_people',array('event_people_id'=>$id));
     }
 }

@@ -30,21 +30,21 @@ class Event_person extends MY_Controller{
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('people_id','People Id','integer');
-		$this->form_validation->set_rules('events_id','Events Id','integer');
+		$this->form_validation->set_rules('event_id','Event Id','integer');
 		$this->form_validation->set_rules('comment','Comment','max_length[255]');
 		
 		if($this->form_validation->run())     
         {   
             $params = array(
 				'people_id' => $this->input->post('people_id'),
-				'events_id' => $this->input->post('events_id'),
+				'event_id' => $this->input->post('event_id'),
 				'registered' => $this->input->post('registered'),
 				'attended' => $this->input->post('attended'),
 				'paid' => $this->input->post('paid'),
 				'comment' => $this->input->post('comment'),
             );
             
-            $event_person_id = $this->Event_person_model->add_event_person($params);
+            $event_people_id = $this->Event_person_model->add_event_person($params);
             redirect('event_person/index');
         }
         else
@@ -63,31 +63,31 @@ class Event_person extends MY_Controller{
     /*
      * Editing a event_person
      */
-    function edit($id)
+    function edit($event_people_id)
     {   
         // check if the event_person exists before trying to edit it
-        $data['event_person'] = $this->Event_person_model->get_event_person($id);
+        $data['event_person'] = $this->Event_person_model->get_event_person($event_people_id);
         
-        if(isset($data['event_person']['id']))
+        if(isset($data['event_person']['event_people_id']))
         {
             $this->load->library('form_validation');
 
 			$this->form_validation->set_rules('people_id','People Id','integer');
-			$this->form_validation->set_rules('events_id','Events Id','integer');
+			$this->form_validation->set_rules('event_id','Event Id','integer');
 			$this->form_validation->set_rules('comment','Comment','max_length[255]');
 		
 			if($this->form_validation->run())     
             {   
                 $params = array(
 					'people_id' => $this->input->post('people_id'),
-					'events_id' => $this->input->post('events_id'),
+					'event_id' => $this->input->post('event_id'),
 					'registered' => $this->input->post('registered'),
 					'attended' => $this->input->post('attended'),
 					'paid' => $this->input->post('paid'),
 					'comment' => $this->input->post('comment'),
                 );
 
-                $this->Event_person_model->update_event_person($id,$params);            
+                $this->Event_person_model->update_event_person($event_people_id,$params);            
                 redirect('event_person/index');
             }
             else
@@ -109,14 +109,14 @@ class Event_person extends MY_Controller{
     /*
      * Deleting event_person
      */
-    function remove($id)
+    function remove($event_people_id)
     {
-        $event_person = $this->Event_person_model->get_event_person($id);
+        $event_person = $this->Event_person_model->get_event_person($event_people_id);
 
         // check if the event_person exists before trying to delete it
-        if(isset($event_person['id']))
+        if(isset($event_person['event_people_id']))
         {
-            $this->Event_person_model->delete_event_person($id);
+            $this->Event_person_model->delete_event_person($event_people_id);
             redirect('event_person/index');
         }
         else

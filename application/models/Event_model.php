@@ -24,13 +24,12 @@ class Event_model extends CI_Model
      */
     function get_all_events()
     {
-			return $this->db->query('SELECT event_id, event_type, category_name, hall_name, cia12_events.name, date, location, comments
-FROM cia12_events, cia12_event_type, cia12_category, cia12_halls
-WHERE cia12_events.event_type_id = cia12_event_type.event_type_id 
-AND cia12_events.category_id = cia12_category.category_id;')->result_array();
+			return $this->db->query('SELECT event_id, event_type, category_name, hall_name, cia12_events.event_name, date, location, comments
+				FROM cia12_events, cia12_event_type, cia12_category, cia12_halls
+				WHERE cia12_events.event_type_id = cia12_event_type.event_type_id 
+				AND cia12_events.category_id = cia12_category.category_id
+				AND cia12_events.hall_id = cia12_halls.hall_id;')->result_array();
 													
-        $this->db->order_by('event_id', 'desc');
-        return $this->db->get('cia12_events')->result_array();
     }
         
     /*

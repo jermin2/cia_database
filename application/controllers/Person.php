@@ -32,7 +32,7 @@ class Person extends MY_Controller{
         {   
             $params = array(
 				'age_group_id' => $this->input->post('age_group_id'),
-				'hall' => $this->input->post('hall'),
+				'hall_id' => $this->input->post('hall_id'),
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
 				'gender' => $this->input->post('gender'),
@@ -74,7 +74,7 @@ class Person extends MY_Controller{
             {   
                 $params = array(
 					'age_group_id' => $this->input->post('age_group_id'),
-					'hall' => $this->input->post('hall'),
+					'hall_id' => $this->input->post('hall_id'),
 					'first_name' => $this->input->post('first_name'),
 					'last_name' => $this->input->post('last_name'),
 					'gender' => $this->input->post('gender'),

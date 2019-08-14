@@ -55,12 +55,12 @@
 	<div class="form-group row">
 		<label for="hall" class="col-md-2 control-label">Hall</label>
 		<div class="col-md-4">
-			<select name="hall" class="form-control">
+			<select name="hall_id" class="form-control">
 				<option value="">select hall</option>
 				<?php 
 				foreach($all_halls as $hall)
 				{
-					$selected = ($hall['hall_id'] == $this->input->post('hall')) ? ' selected="selected"' : "";
+					$selected = ($hall['hall_id'] == $this->input->post('hall_id')) ? ' selected="selected"' : "";
 
 					echo '<option value="'.$hall['hall_id'].'" '.$selected.'>'.$hall['hall_name'].'</option>';
 				} 

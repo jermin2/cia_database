@@ -40,7 +40,7 @@
 				<?php 
 				foreach($all_halls as $hall)
 				{
-					$selected = ($hall['hall_id'] == $event['hall']) ? ' selected="selected"' : "";
+					$selected = ($hall['hall_id'] == $event['hall_id']) ? ' selected="selected"' : "";
 
 					echo '<option value="'.$hall['hall_id'].'" '.$selected.'>'.$hall['hall_name'].'</option>';
 				} 

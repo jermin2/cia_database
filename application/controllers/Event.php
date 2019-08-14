@@ -32,7 +32,7 @@ class Event extends MY_Controller{
             $params = array(
 				'event_type_id' => $this->input->post('event_type_id'),
 				'category_id' => $this->input->post('category_id'),
-				'hall' => $this->input->post('hall'),
+				'hall_id' => $this->input->post('hall_id'),
 				'name' => $this->input->post('name'),
 				'date' => $this->input->post('date'),
 				'location' => $this->input->post('location'),
@@ -73,7 +73,7 @@ class Event extends MY_Controller{
                 $params = array(
 					'event_type_id' => $this->input->post('event_type_id'),
 					'category_id' => $this->input->post('category_id'),
-					'hall' => $this->input->post('hall'),
+					'hall_id' => $this->input->post('hall_id'),
 					'name' => $this->input->post('name'),
 					'date' => $this->input->post('date'),
 					'location' => $this->input->post('location'),
