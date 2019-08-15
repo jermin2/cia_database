@@ -36,7 +36,6 @@
 		<label for="hall" class="col-md-2 control-label">Hall</label>
 		<div class="col-md-4">
 			<select name="hall_id" class="form-control">
-				<option value="">select hall</option>
 				<?php 
 				foreach($all_halls as $hall)
 				{
@@ -49,15 +48,15 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="name" class="col-md-2 control-label">Name</label>
+		<label for="event_name" class="col-md-2 control-label">Event name</label>
 		<div class="col-md-4">
-			<input type="text" name="name" value="<?php echo $this->input->post('name'); ?>" class="form-control" id="name" />
+			<input type="text" name="event_name" value="<?php echo $this->input->post('event_name'); ?>" class="form-control" id="event_name" />
 		</div>
 	</div>
 	<div class="form-group row">
 		<label for="date" class="col-md-2 control-label">Date</label>
 		<div class="col-md-4">
-			<input type="text" name="date" value="<?php echo $this->input->post('date'); ?>" class="form-control" id="date" />
+			<input type="datetime-local" name="date" value="<?php echo $this->input->post('date'); ?>" class="form-control" id="date" />
 		</div>
 	</div>
 	<div class="form-group row">

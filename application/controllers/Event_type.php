@@ -16,17 +16,22 @@ class Event_type extends MY_Controller{
      */
     function index()
     {
+			if( $this->require_role('admin') )
+			{	
         $data['event_types'] = $this->Event_type_model->get_all_event_types();
         
         $data['_view'] = 'event_type/index';
         $this->load->view('mainpage',$data);
+			}
     }
 
     /*
      * Adding a new event_type
      */
     function add()
-    {   
+    {
+			if( $this->require_role('admin') )
+			{				
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
@@ -41,13 +46,16 @@ class Event_type extends MY_Controller{
             $data['_view'] = 'event_type/add';
             $this->load->view('mainpage',$data);
         }
+			}
     }  
 
     /*
      * Editing a event_type
      */
     function edit($event_type_id)
-    {   
+    {  
+			if( $this->require_role('admin') )
+			{			
         // check if the event_type exists before trying to edit it
         $data['event_type'] = $this->Event_type_model->get_event_type($event_type_id);
         
@@ -70,6 +78,7 @@ class Event_type extends MY_Controller{
         }
         else
             show_error('The event_type you are trying to edit does not exist.');
+			}
     } 
 
     /*
@@ -77,6 +86,8 @@ class Event_type extends MY_Controller{
      */
     function remove($event_type_id)
     {
+			if( $this->require_role('admin') )
+			{	
         $event_type = $this->Event_type_model->get_event_type($event_type_id);
 
         // check if the event_type exists before trying to delete it
@@ -87,6 +98,7 @@ class Event_type extends MY_Controller{
         }
         else
             show_error('The event_type you are trying to delete does not exist.');
+			}
     }
     
 }

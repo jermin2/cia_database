@@ -20,7 +20,7 @@
 		<td><?php echo $c['event_type']; ?></td>
 		<td><?php echo $c['category_name']; ?></td>
 		<td><?php echo $c['hall_name']; ?></td>
-		<td><?php echo $c['name']; ?></td>
+		<td><?php echo $c['event_name']; ?></td>
 		<td><?php echo $c['date']; ?></td>
 		<td><?php echo $c['location']; ?></td>
 		<td><?php echo $c['comments']; ?></td>

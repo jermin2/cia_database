@@ -16,18 +16,23 @@ class Person extends MY_Controller{
      */
     function index()
     {
+			if( $this->require_role('admin') )
+			{	
         $data['people'] = $this->Person_model->get_all_people();
         
 				
         $data['_view'] = 'person/index';
         $this->load->view('mainpage',$data);
+			}
     }
 
     /*
      * Adding a new person
      */
     function add()
-    {   
+    {
+			if( $this->require_role('admin') )
+			{				
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
@@ -58,13 +63,16 @@ class Person extends MY_Controller{
             $data['_view'] = 'person/add';
             $this->load->view('mainpage',$data);
         }
+			}
     }  
 
     /*
      * Editing a person
      */
     function edit($people_id)
-    {   
+    {
+			if( $this->require_role('admin') )
+			{				
         // check if the person exists before trying to edit it
         $data['person'] = $this->Person_model->get_person($people_id);
         
@@ -103,6 +111,7 @@ class Person extends MY_Controller{
         }
         else
             show_error('The person you are trying to edit does not exist.');
+			}
     } 
 
     /*
@@ -110,6 +119,8 @@ class Person extends MY_Controller{
      */
     function remove($people_id)
     {
+			if( $this->require_role('admin') )
+			{	
         $person = $this->Person_model->get_person($people_id);
 
         // check if the person exists before trying to delete it
@@ -120,6 +131,7 @@ class Person extends MY_Controller{
         }
         else
             show_error('The person you are trying to delete does not exist.');
+			}
     }
     
 }

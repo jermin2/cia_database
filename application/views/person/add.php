@@ -33,7 +33,7 @@
 	<div class="form-group row">
 		<label for="dob" class="col-md-2 control-label">D.O.B</label>
 		<div class="col-md-4">
-			<input type="text" name="dob" value="<?php echo $this->input->post('dob'); ?>" class="form-control" id="dob" />
+			<input type="date" name="dob" value="<?php echo $this->input->post('dob'); ?>" class="form-control" id="dob" />
 		</div>
 	</div>
 	<div class="form-group row">

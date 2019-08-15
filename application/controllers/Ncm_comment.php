@@ -16,17 +16,22 @@ class Ncm_comment extends MY_Controller{
      */
     function index()
     {
+			if( $this->require_role('admin') )
+			{	
         $data['ncm_comments'] = $this->Ncm_comment_model->get_all_ncm_comments();
         
         $data['_view'] = 'ncm_comment/index';
         $this->load->view('mainpage',$data);
+			}
     }
 
     /*
      * Adding a new ncm_comment
      */
     function add()
-    {   
+    {
+			if( $this->require_role('admin') )
+				{				
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
@@ -47,13 +52,16 @@ class Ncm_comment extends MY_Controller{
             $data['_view'] = 'ncm_comment/add';
             $this->load->view('mainpage',$data);
         }
+				}
     }  
 
     /*
      * Editing a ncm_comment
      */
     function edit($comment_id)
-    {   
+    {
+			if( $this->require_role('admin') )
+						{				
         // check if the ncm_comment exists before trying to edit it
         $data['ncm_comment'] = $this->Ncm_comment_model->get_ncm_comment($comment_id);
         
@@ -82,6 +90,7 @@ class Ncm_comment extends MY_Controller{
         }
         else
             show_error('The ncm_comment you are trying to edit does not exist.');
+						}
     } 
 
     /*
@@ -89,6 +98,8 @@ class Ncm_comment extends MY_Controller{
      */
     function remove($comment_id)
     {
+			if( $this->require_role('admin') )
+			{	
         $ncm_comment = $this->Ncm_comment_model->get_ncm_comment($comment_id);
 
         // check if the ncm_comment exists before trying to delete it
@@ -99,6 +110,7 @@ class Ncm_comment extends MY_Controller{
         }
         else
             show_error('The ncm_comment you are trying to delete does not exist.');
+			}
     }
     
 }

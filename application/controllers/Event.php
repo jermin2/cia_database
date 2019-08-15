@@ -16,24 +16,29 @@ class Event extends MY_Controller{
      */
     function index()
     {
+			if( $this->require_role('admin') )
+			{	
         $data['events'] = $this->Event_model->get_all_events();
         
         $data['_view'] = 'event/index';
         $this->load->view('mainpage',$data);
+			}
     }
 
     /*
      * Adding a new event
      */
     function add()
-    {   
+    {
+			if( $this->require_role('admin') )
+			{	
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
 				'event_type_id' => $this->input->post('event_type_id'),
 				'category_id' => $this->input->post('category_id'),
 				'hall_id' => $this->input->post('hall_id'),
-				'name' => $this->input->post('name'),
+				'event_name' => $this->input->post('event_name'),
 				'date' => $this->input->post('date'),
 				'location' => $this->input->post('location'),
 				'comments' => $this->input->post('comments'),
@@ -44,45 +49,80 @@ class Event extends MY_Controller{
         }
         else
         {
-			$this->load->model('Event_type_model');
-			$data['all_event_types'] = $this->Event_type_model->get_all_event_types();
+					$this->load->model('Event_type_model');
+					$data['all_event_types'] = $this->Event_type_model->get_all_event_types();
 
-			$this->load->model('Category_model');
-			$data['all_categories'] = $this->Category_model->get_all_categories();
+					$this->load->model('Category_model');
+					$data['all_categories'] = $this->Category_model->get_all_categories();
 
-			$this->load->model('Hall_model');
-			$data['all_halls'] = $this->Hall_model->get_all_halls();
+					$this->load->model('Hall_model');
+					$data['all_halls'] = $this->Hall_model->get_all_halls();
             
-            $data['_view'] = 'event/add';
-            $this->load->view('mainpage',$data);
+					$data['_view'] = 'event/add';
+					$this->load->view('mainpage',$data);
         }
+			}
     }  
 
     /*
      * Editing a event
      */
     function edit($event_id)
-    {   
+    {
+			if( $this->require_role('admin') )
+			{	
         // check if the event exists before trying to edit it
         $data['event'] = $this->Event_model->get_event($event_id);
+				$this->load->model('Event_person_model');
         
         if(isset($data['event']['event_id']))
         {
-            if(isset($_POST) && count($_POST) > 0)     
-            {   
-                $params = array(
-					'event_type_id' => $this->input->post('event_type_id'),
-					'category_id' => $this->input->post('category_id'),
-					'hall_id' => $this->input->post('hall_id'),
-					'name' => $this->input->post('name'),
-					'date' => $this->input->post('date'),
-					'location' => $this->input->post('location'),
-					'comments' => $this->input->post('comments'),
-                );
+					if(isset($_POST) && count($_POST) > 0)     
+					{   
+						$params = array(
+							'event_type_id' => $this->input->post('event_type_id'),
+							'category_id' => $this->input->post('category_id'),
+							'hall_id' => $this->input->post('hall_id'),
+							'event_name' => $this->input->post('event_name'),
+							'date' => $this->input->post('date'),
+							'location' => $this->input->post('location'),
+							'comments' => $this->input->post('comments'),
+						);
 
-                $this->Event_model->update_event($event_id,$params);            
-                redirect('event/index');
-            }
+							$this->Event_model->update_event($event_id,$params);   
+
+ 
+ 
+					$event_people_id = $_POST['event_people_id'];
+					$registered = $_POST['registered'];
+					$attended = $_POST['attended'];
+					$paid = $_POST['paid'];
+					$comment = $_POST['comment'];
+					
+					foreach($event_people_id as $key => $id)
+					{
+					$event_params = array(
+						'registered' => $registered[$key],
+						'attended' => $attended[$key],
+						'paid' => $paid[$key],
+						'comment' => $comment[$key],
+					);						
+						
+					$this->Event_person_model->update_event_person($id,$event_params);  
+						
+						
+					}
+						/*
+
+
+
+					
+						
+						
+						*/
+						
+							redirect('event/index');
+					}
             else
             {
 				$this->load->model('Event_type_model');
@@ -93,13 +133,17 @@ class Event extends MY_Controller{
 
 				$this->load->model('Hall_model');
 				$data['all_halls'] = $this->Hall_model->get_all_halls();
+				
+				$this->load->model('Event_person_model');
+				$data['event_people'] = $this->Event_person_model->get_event_person_by_event_id($event_id);
 
-                $data['_view'] = 'event/edit';
-                $this->load->view('mainpage',$data);
+				$data['_view'] = 'event/edit';
+				$this->load->view('mainpage',$data);
             }
         }
         else
             show_error('The event you are trying to edit does not exist.');
+			}
     } 
 
     /*
@@ -107,6 +151,8 @@ class Event extends MY_Controller{
      */
     function remove($event_id)
     {
+			if( $this->require_role('admin') )
+			{	
         $event = $this->Event_model->get_event($event_id);
 
         // check if the event exists before trying to delete it
@@ -117,6 +163,7 @@ class Event extends MY_Controller{
         }
         else
             show_error('The event you are trying to delete does not exist.');
+			}
     }
     
 }

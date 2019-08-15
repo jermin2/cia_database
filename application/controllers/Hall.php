@@ -16,17 +16,22 @@ class Hall extends MY_Controller{
      */
     function index()
     {
+			if( $this->require_role('admin') )
+			{	
         $data['halls'] = $this->Hall_model->get_all_halls();
         
         $data['_view'] = 'hall/index';
         $this->load->view('mainpage',$data);
+			}
     }
 
     /*
      * Adding a new hall
      */
     function add()
-    {   
+    { 
+			if( $this->require_role('admin') )
+			{			
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
@@ -41,13 +46,16 @@ class Hall extends MY_Controller{
             $data['_view'] = 'hall/add';
             $this->load->view('mainpage',$data);
         }
+			}
     }  
 
     /*
      * Editing a hall
      */
     function edit($hall_id)
-    {   
+    {
+			if( $this->require_role('admin') )
+			{				
         // check if the hall exists before trying to edit it
         $data['hall'] = $this->Hall_model->get_hall($hall_id);
         
@@ -70,6 +78,7 @@ class Hall extends MY_Controller{
         }
         else
             show_error('The hall you are trying to edit does not exist.');
+			}
     } 
 
     /*
@@ -77,6 +86,8 @@ class Hall extends MY_Controller{
      */
     function remove($hall_id)
     {
+			if( $this->require_role('admin') )
+			{	
         $hall = $this->Hall_model->get_hall($hall_id);
 
         // check if the hall exists before trying to delete it
@@ -87,6 +98,7 @@ class Hall extends MY_Controller{
         }
         else
             show_error('The hall you are trying to delete does not exist.');
+			}
     }
     
 }

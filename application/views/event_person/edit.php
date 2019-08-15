@@ -59,7 +59,7 @@
 			<span class="text-danger"><?php echo form_error('comment');?></span>
 		</div>
 	</div>
-	
+
 	<div class="form-group row">
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Save</button>

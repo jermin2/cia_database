@@ -15,11 +15,14 @@ class Age_group extends MY_Controller{
      * Listing of age_groups
      */
     function index()
-    {
+    {		
+		if( $this->require_role('admin') )
+			{
         $data['age_groups'] = $this->Age_group_model->get_all_age_groups();
         
         $data['_view'] = 'age_group/index';
         $this->load->view('mainpage',$data);
+			}
     }
 
     /*
@@ -27,9 +30,11 @@ class Age_group extends MY_Controller{
      */
     function add()
     {   
+			if( $this->require_role('admin') )
+			{
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('age_group_name','Age Group Name','max_length[100]');
+				$this->form_validation->set_rules('age_group_name','Age Group Name','max_length[100]');
 		
 		if($this->form_validation->run())     
         {   
@@ -45,6 +50,7 @@ class Age_group extends MY_Controller{
             $data['_view'] = 'age_group/add';
             $this->load->view('mainpage',$data);
         }
+			}
     }  
 
     /*
@@ -52,6 +58,8 @@ class Age_group extends MY_Controller{
      */
     function edit($age_group_id)
     {   
+			if( $this->require_role('admin') )
+			{
         // check if the age_group exists before trying to edit it
         $data['age_group'] = $this->Age_group_model->get_age_group($age_group_id);
         
@@ -78,6 +86,7 @@ class Age_group extends MY_Controller{
         }
         else
             show_error('The age_group you are trying to edit does not exist.');
+			}
     } 
 
     /*
@@ -85,6 +94,8 @@ class Age_group extends MY_Controller{
      */
     function remove($age_group_id)
     {
+			if( $this->require_role('admin') )
+			{
         $age_group = $this->Age_group_model->get_age_group($age_group_id);
 
         // check if the age_group exists before trying to delete it
@@ -95,6 +106,7 @@ class Age_group extends MY_Controller{
         }
         else
             show_error('The age_group you are trying to delete does not exist.');
+			}
     }
     
 }

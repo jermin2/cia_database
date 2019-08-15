@@ -18,16 +18,16 @@
 		</div>
 	</div>
 	<div class="form-group row">
-		<label for="event_people_id" class="col-md-2 control-label">Event</label>
+		<label for="event_id" class="col-md-2 control-label">Event</label>
 		<div class="col-md-4">
-			<select name="event_people_id" class="form-control">
+			<select name="event_id" class="form-control">
 				<option value="">select event</option>
 				<?php 
 				foreach($all_events as $event)
 				{
 					$selected = ($event['event_id'] == $this->input->post('event_people_id')) ? ' selected="selected"' : "";
 
-					echo '<option value="'.$event['event_id'].'" '.$selected.'>'.$event['name'].'</option>';
+					echo '<option value="'.$event['event_id'].'" '.$selected.'>'.$event['event_name'].'</option>';
 				} 
 				?>
 			</select>

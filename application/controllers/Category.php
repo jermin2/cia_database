@@ -16,10 +16,13 @@ class Category extends MY_Controller{
      */
     function index()
     {
+			if( $this->require_role('admin') )
+			{
         $data['categories'] = $this->Category_model->get_all_categories();
         
         $data['_view'] = 'category/index';
         $this->load->view('mainpage',$data);
+			}
     }
 
     /*
@@ -27,6 +30,8 @@ class Category extends MY_Controller{
      */
     function add()
     {   
+			if( $this->require_role('admin') )
+			{
         if(isset($_POST) && count($_POST) > 0)     
         {   
             $params = array(
@@ -41,13 +46,16 @@ class Category extends MY_Controller{
             $data['_view'] = 'category/add';
             $this->load->view('mainpage',$data);
         }
+			}
     }  
 
     /*
      * Editing a category
      */
     function edit($category_id)
-    {   
+    {
+			if( $this->require_role('admin') )
+			{			
         // check if the category exists before trying to edit it
         $data['category'] = $this->Category_model->get_category($category_id);
         
@@ -70,6 +78,7 @@ class Category extends MY_Controller{
         }
         else
             show_error('The category you are trying to edit does not exist.');
+			}
     } 
 
     /*
@@ -77,6 +86,8 @@ class Category extends MY_Controller{
      */
     function remove($category_id)
     {
+			if( $this->require_role('admin') )
+			{	
         $category = $this->Category_model->get_category($category_id);
 
         // check if the category exists before trying to delete it
@@ -87,6 +98,7 @@ class Category extends MY_Controller{
         }
         else
             show_error('The category you are trying to delete does not exist.');
+			}
     }
     
 }

@@ -18,18 +18,34 @@ class Event_person_model extends CI_Model
     {
         return $this->db->get_where('cia12_event_people',array('event_people_id'=>$event_people_id))->row_array();
     }
-        
+		
+    /*
+     * Get event_person by event_id
+     */
+    function get_event_person_by_event_id($event_id)
+    {
+			$this->db->select('event_people_id, CONCAT(cia12_people.first_name, " ", cia12_people.last_name) AS full_name, cia12_events.event_name, registered, attended, paid, comment');
+			$this->db->from('cia12_event_people, cia12_events, cia12_people, cia12_halls');
+			$this->db->where('cia12_event_people.people_id = cia12_people.people_id');
+			$this->db->where('cia12_event_people.event_id', $event_id);
+			$this->db->where('cia12_event_people.event_id = cia12_events.event_id');
+			$this->db->where('cia12_events.hall_id = cia12_halls.hall_id');
+			$query = $this->db->get();
+			return $query->result_array();	
+    }     
+		
     /*
      * Get all event_people
      */
     function get_all_event_people()
     {
-							return $this->db->query('SELECT event_people_id, cia12_people.people_id, cia12_events.event_id, registered, attended, paid, comment
-				FROM cia12_event_people, cia12_events, cia12_people, cia12_halls
-				WHERE cia12_event_people.people_id = cia12_people.people_id 
-				AND cia12_event_people.event_id = cia12_events.event_id
-				AND cia12_events.hall_id = cia12_halls.hall_id;')->result_array();
-				
+			$this->db->select('event_people_id, CONCAT(cia12_people.first_name, " ", cia12_people.last_name) AS full_name, cia12_events.event_name, registered, attended, paid, comment');
+			$this->db->from('cia12_event_people, cia12_events, cia12_people, cia12_halls');
+			$this->db->where('cia12_event_people.people_id = cia12_people.people_id');
+			$this->db->where('cia12_event_people.event_id = cia12_events.event_id');
+			$this->db->where('cia12_events.hall_id = cia12_halls.hall_id');
+			$query = $this->db->get();
+			return $query->result_array();
     }
         
     /*

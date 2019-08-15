@@ -24,7 +24,7 @@ class Hall_model extends CI_Model
      */
     function get_all_halls()
     {
-        $this->db->order_by('hall_id', 'desc');
+        $this->db->order_by('hall_id', 'asc');
         return $this->db->get('cia12_halls')->result_array();
     }
         
