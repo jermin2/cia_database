@@ -18,18 +18,44 @@ class Event_model extends CI_Model
     {
         return $this->db->get_where('cia12_events',array('event_id'=>$event_id))->row_array();
     }
+		
+		
+		
+		function get_event_by_options($hall_id = NULL, $event_type_id = NULL, $category_id = NULL)
+		{
+			$this->db->select('event_id, event_type, category_name, hall_name, cia12_events.event_name, date, location, comments');
+			$this->db->from('cia12_events, cia12_event_type, cia12_category, cia12_halls');
+			$this->db->where('cia12_events.event_type_id = cia12_event_type.event_type_id');
+			if(isset($event_type_id)){
+				$this->db->where('cia12_events.event_type_id', $event_type_id);
+			}					
+			$this->db->where('cia12_events.category_id = cia12_category.category_id');
+			if(isset($category_id)){
+				$this->db->where('cia12_events.category_id', $category_id);
+			}			
+			$this->db->where('cia12_events.hall_id = cia12_halls.hall_id');
+			if(isset($hall_id)){
+				$this->db->where('cia12_events.hall_id', $hall_id);
+			}
+			$query = $this->db->get();
+			return $query->result_array();	
+			
+			//Find 
+		}
+			
         
     /*
      * Get all events
      */
     function get_all_events()
     {
-			return $this->db->query('SELECT event_id, event_type, category_name, hall_name, cia12_events.event_name, date, location, comments
-				FROM cia12_events, cia12_event_type, cia12_category, cia12_halls
-				WHERE cia12_events.event_type_id = cia12_event_type.event_type_id 
-				AND cia12_events.category_id = cia12_category.category_id
-				AND cia12_events.hall_id = cia12_halls.hall_id;')->result_array();
-													
+			$this->db->select('event_id, event_type, category_name, hall_name, cia12_events.event_name, date, location, comments');
+			$this->db->from('cia12_events, cia12_event_type, cia12_category, cia12_halls');
+			$this->db->where('cia12_events.event_type_id = cia12_event_type.event_type_id');
+			$this->db->where('cia12_events.category_id = cia12_category.category_id');
+			$this->db->where('cia12_events.hall_id = cia12_halls.hall_id');
+			$query = $this->db->get();
+			return $query->result_array();	
     }
         
     /*

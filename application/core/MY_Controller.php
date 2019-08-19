@@ -23,6 +23,7 @@ class MY_Controller extends Auth_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		date_default_timezone_set('Pacific/Auckland');
 	}
 }
 

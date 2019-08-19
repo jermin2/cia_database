@@ -57,7 +57,7 @@
 	<div class="form-group row">
 		<label for="date" class="col-md-2 control-label">Date</label>
 		<div class="col-md-4">
-			<input type="datetime-local" name="date" value="<?php echo ($this->input->post('date') ? $this->input->post('date') : $event['date']); ?>" class="form-control" id="date" />
+			<input type="datetime-local" name="date" value="<?php echo ($this->input->post('datetime') ? $this->input->post('datetime') : $event['datetime']); ?>" class="form-control" id="date" />
 		</div>
 	</div>
 	<div class="form-group row">
@@ -106,7 +106,6 @@
     </tr>
 	<?php } ?>
 </table>
-	<h1>Ian is Gay</h1>
 	
 	<div class="form-group row">
 		<div class="col-sm-offset-4 col-sm-8">

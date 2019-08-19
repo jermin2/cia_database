@@ -83,3 +83,27 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+/*
+|--------------------------------------------------------------------------
+| Custom Defines
+|--------------------------------------------------------------------------
+|
+*/
+define('CATEGORY_PRI', 0);
+define('CATEGORY_INT', 1);
+define('CATEGORY_HS', 2);
+define('CATEOGRY_CAM', 3);
+define('CATEGORY_COM', 4);
+
+define('EVENT_APPOINT', 0);
+define('EVENT_SMALLGROUP', 1);
+define('EVENT_GROUPMEET', 2);
+define('EVENT_CHURCHMEET', 3);
+define('EVENT_AUCKLAND', 4);
+define('EVENT_NATIONAL', 5);
+
+define('HALL_1', 1);
+define('HALL_2', 2);
+define('HALL_3', 3);
+define('HALL_4', 4);
+define('HALL_5', 5);

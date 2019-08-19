@@ -16,7 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Custom style for this template -->
-	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=3" rel="stylesheet">
+	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=1" rel="stylesheet">
 	
 </head>
 <body>
