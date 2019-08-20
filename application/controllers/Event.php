@@ -21,11 +21,19 @@ class Event extends MY_Controller{
 			if( $this->require_role('admin') )
 			{	
         $data['events'] = $this->Event_model->get_all_events();
-        
+        $data['_view'] = 'event/index';
+        $this->load->view('mainpage',$data);
+			}
+			
+			if ($this->require_role('viewer') )
+			{	
+        $data['events'] = $this->Event_model->get_all_events();
         $data['_view'] = 'event/index';
         $this->load->view('mainpage',$data);
 			}
     }
+		
+		
 		
     /*
      * Listing of events
@@ -89,14 +97,14 @@ class Event extends MY_Controller{
     /*
      * Adding a new event
      */
-    function quick_add($hall_id, $category_id, $event_type_id)
+    function quick_add($hall_id, $event_type_id, $category_id)
     {
 			$logged_in_id = 1;
 
 			if( $this->require_role('admin') )
 			{	
 				$params = array(
-				'event_type_id' => $category_id,
+				'event_type_id' => $event_type_id,
 				'category_id' => $category_id,
 				'hall_id' => $hall_id,
 				'event_name' => date_create('now')->format('Y-m-d') ,
@@ -117,6 +125,45 @@ class Event extends MY_Controller{
 				redirect('event/edit/'.$event_id);
 			}
     }  
+		
+		function view_by_id($event_id)
+		{
+			if ( $this->verify_min_level(1))
+			{
+        // check if the event exists before trying to edit it
+        $data['event'] = $this->Event_model->get_event($event_id);
+				
+				// Convert the time to something we can use
+				$data['event']['datetime'] =  date('Y-m-d\TH:i', strtotime($data['event']['date']));
+
+				$this->load->model('Event_person_model');
+        
+        if(isset($data['event']['event_id']))
+        {		
+					$this->load->model('Event_type_model');
+					$data['all_event_types'] = $this->Event_type_model->get_all_event_types();
+
+					$this->load->model('Category_model');
+					$data['all_categories'] = $this->Category_model->get_all_categories();
+
+					$this->load->model('Hall_model');
+					$data['all_halls'] = $this->Hall_model->get_all_halls();
+		
+					$this->load->model('Event_person_model');
+					$data['event_people'] = $this->Event_person_model->get_event_person_by_event_id($event_id);
+
+					$data['event']['event_type'] = $this->Event_type_model->get_event_type($data['event']['event_type_id'])->event_type;
+					$data['event']['category'] = $this->Category_model->get_category($data['event']['category_id'])->category_name;
+					$data['event']['hall_name'] = $this->Hall_model->get_hall($data['event']['hall_id'])->hall_name;
+					
+
+					$data['_view'] = 'event/view';
+					$this->load->view('mainpage',$data);			
+        }
+        else
+            show_error('The event you are trying to edit does not exist.');
+			}
+		}
 
     /*
      * Editing a event

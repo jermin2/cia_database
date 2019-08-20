@@ -24,7 +24,21 @@ class Event_person extends MY_Controller{
         $this->load->view('mainpage',$data);
 			}
     }
-
+		
+		/*
+		 * View the events that you are in
+		 */
+		function viewself()
+		{
+			if ($this->require_role('viewer') )
+			{
+        $data['event_people'] = $this->Event_person_model->get_events_by_people_id($this->profile_data['people_id']);
+        
+        $data['_view'] = 'event_person/view';
+        $this->load->view('mainpage',$data);				
+			}
+			
+		}
     /*
      * Adding a new event_person
      */

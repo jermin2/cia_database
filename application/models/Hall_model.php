@@ -16,7 +16,7 @@ class Hall_model extends CI_Model
      */
     function get_hall($hall_id)
     {
-        return $this->db->get_where('cia12_halls',array('hall_id'=>$hall_id))->row_array();
+        return $this->db->get_where('cia12_halls',array('hall_id'=>$hall_id))->row();
     }
         
     /*

@@ -16,7 +16,7 @@ class Event_type_model extends CI_Model
      */
     function get_event_type($event_type_id)
     {
-        return $this->db->get_where('cia12_event_type',array('event_type_id'=>$event_type_id))->row_array();
+        return $this->db->get_where('cia12_event_type',array('event_type_id'=>$event_type_id))->row();
     }
         
     /*

@@ -11,6 +11,19 @@ class Event_person_model extends CI_Model
         parent::__construct();
     }
     
+		
+		function get_events_by_people_id($people_id)
+		{
+			$this->db->select('cia12_events.event_id, event_name, date, location, cia12_event_type.event_type, attended, registered, paid');
+			$this->db->from('cia12_events, cia12_event_type,cia12_event_people');
+			$this->db->where('cia12_events.event_type_id = cia12_event_type.event_type_id');
+			$this->db->where('cia12_events.event_id = cia12_event_people.event_id');
+			$this->db->where('people_id', $people_id);
+			$query = $this->db->get();
+			return $query->result_array();	
+			
+		}
+		
     /*
      * Get event_person by id
      */

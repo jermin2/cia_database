@@ -20,21 +20,24 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		if( $this->require_role('admin') )
+		
+		
+		if( $this->verify_min_level(1) )
 		{
 			//load the user profile
 			
-
 			$data['title'] = 'Welcome Page';
 
-			$data['full_name'] = "Jermin Tiu";
-			$data['hall_name'] = "Hall 3";
-			$data['serving_hs'] = "true";
-			$data['serving_int'] = "true";
+			$data['full_name'] = $this->profile_data['first_name'] . " " . $this->profile_data['last_name'];
+			$data['hall_name'] = "Hall ". $this->profile_data['hall_id'];
+			$data['serving_hs'] = $this->profile_data['serving_hs']==1?"true":"";
+			$data['serving_int'] = $this->profile_data['serving_int']==1?"true":"";
+			$data['serving_campus'] = $this->profile_data['serving_campus']==1?"true":"";;
 
 			$data['_view'] = 'HS-Welcome';
 			$this->load->view('mainpage', $data);
 
 		}
+
 	}
 }

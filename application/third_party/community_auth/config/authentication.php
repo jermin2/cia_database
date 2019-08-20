@@ -28,8 +28,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $config['levels_and_roles'] = [
-	'1' => 'customer',
-	'6' => 'manager',
+	'1' => 'viewer',
+	'4' => 'servingone',
 	'9' => 'admin'
 ];
 
@@ -360,7 +360,7 @@ $config['login_form_validation_file'] = 'form_validation/examples/login';
 | unless you intend to replace the entire Auth model with your own.
 */
 
-$config['declared_auth_model'] = 'auth_model';
+$config['declared_auth_model'] = 'my_auth_model';
 
 #
 # -----------------------------------------------------------------

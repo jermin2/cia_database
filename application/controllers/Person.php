@@ -65,6 +65,52 @@ class Person extends MY_Controller{
         }
 			}
     }  
+	function editself()
+	{
+		if( $this->require_role('viewer') )
+		{		
+			$people_id = $this->profile_data['people_id'];
+		
+        // check if the person exists before trying to edit it
+        $data['person'] = $this->Person_model->get_person($people_id);
+        
+        if(isset($data['person']['people_id']))
+        {
+            if(isset($_POST) && count($_POST) > 0)     
+            {   
+                $params = array(
+					'age_group_id' => $this->input->post('age_group_id'),
+					'hall_id' => $this->input->post('hall_id'),
+					'first_name' => $this->input->post('first_name'),
+					'last_name' => $this->input->post('last_name'),
+					'gender' => $this->input->post('gender'),
+					'dob' => $this->input->post('dob'),
+					'email' => $this->input->post('email'),
+					'mobile' => $this->input->post('mobile'),
+					'address' => $this->input->post('address'),
+                );
+
+                $this->Person_model->update_person($people_id,$params);            
+                redirect('person/index');
+            }
+            else
+            {
+				$data['genders'] = array('Male', 'Female');
+				
+				$this->load->model('Age_group_model');
+				$data['all_age_groups'] = $this->Age_group_model->get_all_age_groups();
+
+				$this->load->model('Hall_model');
+				$data['all_halls'] = $this->Hall_model->get_all_halls();
+
+				$data['_view'] = 'person/edit';
+				$this->load->view('mainpage',$data);
+            }
+        }
+        else
+            show_error('The person you are trying to edit does not exist.');
+			}
+    } 		
 
     /*
      * Editing a person

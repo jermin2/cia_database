@@ -15,7 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // USER RELATED TABLES
 $config['user_table']                   = 'users';
-
+$config['user_profiles']								= 'cia12_user_profiles';
+$config['people']												= 'cia12_people';
 // LOGIN ERROR RELATED TABLES
 $config['errors_table']                 = 'login_errors';
 $config['IP_hold_table']                = 'ips_on_hold';

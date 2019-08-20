@@ -25,6 +25,34 @@ class MY_Controller extends Auth_Controller
 		parent::__construct();
 		date_default_timezone_set('Pacific/Auckland');
 	}
+	
+public $profile_data = NULL;
+ 
+protected function _set_user_variables()
+{
+  parent::_set_user_variables();
+
+  // For controllers
+  $this->profile_data = array(
+    'first_name' => $this->auth_data->first_name,
+    'last_name' => $this->auth_data->last_name,
+		'hall_id' => $this->auth_data->hall_id,
+		'people_id' => $this->auth_data->people_id,
+		
+		'serving_hs' => $this->auth_data->serving_hs,
+		'serving_int' => $this->auth_data->serving_int,
+		'serving_campus' => $this->auth_data->serving_campus,
+		
+		'auth_level' => $this->auth_level,
+  );
+  
+  // For CI config
+  $this->config->set_item( 'profile_data', $this->profile_data );
+ 
+  // For views
+  $this->load->vars( $this->profile_data );
+	
+}
 }
 
 /* End of file MY_Controller.php */

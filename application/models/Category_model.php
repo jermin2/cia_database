@@ -16,7 +16,7 @@ class Category_model extends CI_Model
      */
     function get_category($category_id)
     {
-        return $this->db->get_where('cia12_category',array('category_id'=>$category_id))->row_array();
+        return $this->db->get_where('cia12_category',array('category_id'=>$category_id))->row();
     }
         
     /*

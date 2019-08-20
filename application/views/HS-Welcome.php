@@ -6,15 +6,15 @@
 <div class="text-center">
 <?php  
 $default = true;
-if(isset($serving_hs)){
+if(($serving_hs)){
 	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="HS"/>';
 	$default=false;
 }
-if(isset($serving_int)){
+if(($serving_int)){
 	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="INT"/>';
 	$default=false;
 }
-if(isset($serving_uni)){
+if(($serving_campus)){
 	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="CAMPUS"/>';
 	$default=false;
 }
@@ -30,24 +30,49 @@ if(isset($serving_uni)){
 
 <div class="collapse" id="collapseExample">-->
 <h4 class="h3 center" >Weekly Meeting</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_GROUPMEET .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_GROUPMEET .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_GROUPMEET .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success navlink">New</a> 
+	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_GROUPMEET .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 <hr />
 	<h4 class="h3 center" >Small Group</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_SMALLGROUP .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_SMALLGROUP .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_SMALLGROUP .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success navlink" id="test">New</a> 
+	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_SMALLGROUP .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 	<hr />
 <h4 class="h3 center" >Appointment</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_APPOINT .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_APPOINT .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_APPOINT .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success navlink">New</a> 
+	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_APPOINT .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 	
 </div>	
 	
 </div>
 
 <script>
+//Changes all the links depending on the category selected
 $('input[type=button]').click(function() {
    $('input[type=button]').removeClass('btn-success');
    $(this).addClass('btn-success');
+	 
+	 var cat_type_id = "<?php echo CATEGORY_INT ?>"
+	 
+	 switch( $(this).val()) {
+		 case "INT":
+			cat_type_id = "<?php echo CATEGORY_INT ?>";
+			break;
+		case "HS":
+			cat_type_id = "<?php echo CATEGORY_HS ?>";
+			break;	
+		case "CAMPUS":
+			cat_type_id = "<?php echo CATEOGRY_CAM ?>";
+			break;					
+	 }
+
+	//Update all the links to match the category (replace the last number)
+	 var x = document.getElementsByClassName("navlink");
+	 for(i=0; i<x.length; i++){
+		 var link = x[i].href;
+		 x[i].href = link.substring(0, link.length-1) + cat_type_id;
+	 }
+	 
+	 
+	 
 });
 </script>
