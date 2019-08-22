@@ -19,7 +19,7 @@
 	<div class="form-group row">
 		<label for="category_id" class="col-md-2 control-label">Category</label>
 		<div class="col-md-4">
-			<select name="category_id" class="form-control">
+			<select name="category_id_sel" class="form-control" disabled="disabled">
 				<option value="">select category</option>
 				<?php 
 				foreach($all_categories as $category)
@@ -30,6 +30,9 @@
 				} 
 				?>
 			</select>
+			
+			<input id="category_id" value="<?php echo $event['category_id'] ?>" />
+			<div id="output"></div>
 		</div>
 	</div>
 	<div class="form-group row">
@@ -129,4 +132,9 @@ function EditData(button){
 		button.getElementsByTagName("input")[0].value="0";		
 	}
 }
+
+$(function(){
+    var select_val = $('#category_id_sel option:selected').val();
+    $('#category_id').val(select_val);
+});
 </script>

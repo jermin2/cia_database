@@ -6,20 +6,20 @@
 <div class="text-center">
 <?php  
 $default = true;
-if(($serving_children)){
-	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="CHL"/>';
+if(($serving_primary)){
+	echo '<input type="button" class="cat_sel btn ' . ($default ? 'btn-success' : '') . '" value="CHL"/>';
 	$default=false;
 }
 if(($serving_hs)){
-	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="HS"/>';
+	echo '<input type="button" class="cat_sel btn ' . ($default ? 'btn-success' : '') . '" value="HS"/>';
 	$default=false;
 }
 if(($serving_int)){
-	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="INT"/>';
+	echo '<input type="button" class="cat_sel btn ' . ($default ? 'btn-success' : '') . '" value="INT"/>';
 	$default=false;
 }
 if(($serving_campus)){
-	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="CAMPUS"/>';
+	echo '<input type="button" class="cat_sel btn ' . ($default ? 'btn-success' : '') . '" value="CAMPUS"/>';
 	$default=false;
 }
 ?>
@@ -50,6 +50,48 @@ if(($serving_campus)){
 </div>
 
 <script>
+
+
+$(function(){
+	var y = document.getElementsByClassName('cat_sel');
+	console.log(y.length);
+	
+	 for(i=0; i<y.length; i++){
+		 
+		 if(y[i].classList.contains("btn-success")){
+			 
+			 
+			 var default_val = y[i].value;
+			 
+			 switch( default_val) {
+				 case "CHL":
+					cat_type_id = "<?php echo CATEGORY_PRI ?>";
+					break;
+				 case "INT":
+					cat_type_id = "<?php echo CATEGORY_INT ?>";
+					break;
+				case "HS":
+					cat_type_id = "<?php echo CATEGORY_HS ?>";
+					break;	
+				case "CAMPUS":
+					cat_type_id = "<?php echo CATEGORY_CAMPUS ?>";
+					break;
+						
+			 }
+			
+			//Update all the links to match the category (replace the last number)
+			 var x = document.getElementsByClassName("navlink");
+			 for(i=0; i<x.length; i++){
+				 var link = x[i].href;
+				 x[i].href = link.substring(0, link.length-1) + cat_type_id;
+			 }
+
+		 }
+	 }	
+});
+
+
+
 //Changes all the links depending on the category selected
 $('input[type=button]').click(function() {
    $('input[type=button]').removeClass('btn-success');
@@ -65,7 +107,7 @@ $('input[type=button]').click(function() {
 			cat_type_id = "<?php echo CATEGORY_HS ?>";
 			break;	
 		case "CAMPUS":
-			cat_type_id = "<?php echo CATEOGRY_CAM ?>";
+			cat_type_id = "<?php echo CATEGORY_CAMPUS ?>";
 			break;					
 	 }
 
@@ -75,8 +117,7 @@ $('input[type=button]').click(function() {
 		 var link = x[i].href;
 		 x[i].href = link.substring(0, link.length-1) + cat_type_id;
 	 }
-	 
-	 
-	 
-});
+});	 
+
+
 </script>

@@ -44,9 +44,20 @@
 				echo '
 			<li class="active nav-item">
 				<a href="#eventSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Events</a>
-				<ul class="nav collapse list-unstyled" id="eventSubmenu">
-					<li><a class="nav-link" href="/event/add">&nbsp; Create New</a></li>
-					<li><a class="nav-link" href="/event/index">&nbsp; View All</a></li>
+				<ul class="nav collapse list-unstyled" id="eventSubmenu">';
+				
+				if($auth_level > 4)
+				{
+					echo '<li><a class="nav-link" href="/event/add">&nbsp; Create New</a></li>';
+					echo '<li><a class="nav-link" href="/event/index">&nbsp; View All</a></li>';
+				}
+				
+				if($serving_primary) echo '<li><a class="nav-link" href="/event/view_primary">&nbsp; View Children</a></li>';	
+				if($serving_hs) echo '<li><a class="nav-link" href="/event/view_hs">&nbsp; View Highschoolers</a></li>';
+				if($serving_int) echo '<li><a class="nav-link" href="/event/view_int">&nbsp; View Intermediates</a></li>';
+				if($serving_campus) echo '<li><a class="nav-link" href="/event/view_campus">&nbsp; View Campus</a></li>';	
+
+				echo '
 				</ul>
 			</li>';
 			}

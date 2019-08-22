@@ -92,8 +92,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('CATEGORY_PRI', 0);
 define('CATEGORY_INT', 1);
 define('CATEGORY_HS', 2);
-define('CATEOGRY_CAM', 3);
-define('CATEGORY_COM', 4);
+define('CATEGORY_CAMPUS', 3);
+define('CATEGORY_COMMUNITY', 4);
 
 define('AGE_GROUP_PRIMARY', 10);
 define('AGE_GROUP_INTERMEDIATE', 20);
