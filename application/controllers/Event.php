@@ -89,10 +89,7 @@ class Event extends MY_Controller{
             );
             
             $event_id = $this->Event_model->add_event($params);
-						
-				
-						
-						
+
             redirect('event/index');
         }
         else

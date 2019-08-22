@@ -69,7 +69,7 @@ class Event_person extends MY_Controller{
         else
         {
 			$this->load->model('Person_model');
-			$data['all_people'] = $this->Person_model->get_all_people();
+			$data['all_people'] = $this->Person_model->get_people();
 
 			$this->load->model('Event_model');
 			$data['all_events'] = $this->Event_model->get_all_events();
@@ -115,7 +115,7 @@ class Event_person extends MY_Controller{
 				else
 				{
 					$this->load->model('Person_model');
-					$data['all_people'] = $this->Person_model->get_all_people();
+					$data['all_people'] = $this->Person_model->get_people();
 
 					$this->load->model('Event_model');
 					$data['all_events'] = $this->Event_model->get_all_events();

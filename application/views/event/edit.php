@@ -85,23 +85,19 @@
 
 <table class="table table-striped table-bordered" >
     <tr >
-		<th>ID</th>
 		<th>Full Name</th>
 		<th>Event Name</th>
-		<th>Registered</th>
-		<th>Attended</th>
-		<th>Paid</th>
+		<th>Attendence</th>
 		<th>Comment</th>
 		<th>Actions</th>
     </tr>
 	<?php foreach($event_people as $c){ ?>
     <tr>
-		<td><input type="text" name="event_people_id[]" value="<?php echo $c['event_people_id']; ?>" readonly></td>
 		<td><?php echo $c['full_name']; ?></td>
 		<td><?php echo $c['event_name']; ?></td>
-		<td onclick="EditData(this)" style="background-color: <?php echo ($c['registered']==1 ? 'green' : 'white' )?>"><input type="hidden" name="registered[]" value="<?php echo ($c['registered'] )?>" class="form-control" id="registered"  readonly/></td>
-		<td onclick="EditData(this)" style="background-color: <?php echo ($c['attended']==1 ? 'green' : 'white' )?>"><input type="hidden" name="attended[]" value="<?php echo ($c['attended'] )?>" class="form-control" id="attended"  readonly/></td>
-		<td onclick="EditData(this)" style="background-color: <?php echo ($c['paid']==1 ? 'green' : 'white' )?>"><input type="hidden" name="paid[]" value="<?php echo ($c['paid'] )?>" class="form-control" id="paid"  readonly/></td>
+		<td><a href="#" class="btn btn-xs <?php echo ($c['registered']==1 ? 'btn-success' : 'btn-secondary' )?>">Reg</a> 
+				<a href="#" class="btn btn-xs <?php echo ($c['attended']==1 ? 'btn-success' : 'btn-secondary' )?>">Atten</a>		
+				<a href="#" class="btn btn-xs <?php echo ($c['paid']==1 ? 'btn-success' : 'btn-secondary' )?>">Paid</a>		</td>
 		<td><input type="text" name="comment[]" value="<?php echo $c['comment']; ?>"></td>
 		<td>
             <a href="<?php echo site_url('event_person/edit/'.$c['event_people_id']); ?>" class="btn btn-info btn-xs">Edit</a> 

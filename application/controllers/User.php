@@ -41,16 +41,20 @@ class User extends MY_Controller{
 			}
     }
 		
-	public function create_user()
+	public function create_user($user_data)
 	{
-			if( $this->require_role('admin') ){
-		// Customize this array for your user
-		$user_data = [
-			'username'   => 'testuser2',
-			'passwd'     => 'Testuser2',
-			'email'      => 'test2@gmail.com',
-			'auth_level' => '1', // 9 if you want to login @ examples/index.
-		];
+		if( $this->require_role('admin') )
+		{
+			if(!isset($userdata))
+			{			
+				// Customize this array for your user
+				$user_data = [
+					'username'   => 'testuser2',
+					'passwd'     => 'Testuser2',
+					'email'      => 'test2@gmail.com',
+					'auth_level' => '1', // 9 if you want to login @ examples/index.
+				];
+			}
 
 		$this->is_logged_in();
 
@@ -133,51 +137,6 @@ class User extends MY_Controller{
 	}
 		
 		
-		function view_by_hall(){
-			if( $this->verify_min_level(4))
-			{
-				$this->Person_model->set_hall_id($this->profile_data['hall_id']);
-        $data['people'] = $this->Person_model->get_people();
-				
-				$data['title'] = "View People";	
-				$data['subtitle'] = "By Hall " . $this->profile_data['hall_id'];		
-        $data['_view'] = 'person/index';
-        $this->load->view('mainpage',$data);	
-			}
-		}
-		function view_primary(){$this->view_by_age_group(AGE_GROUP_PRIMARY);	}
-		function view_hs(){$this->view_by_age_group(AGE_GROUP_HIGHSCHOOL);}
-		function view_int(){$this->view_by_age_group(AGE_GROUP_INTERMEDIATE);	}
-		function view_campus(){$this->view_by_age_group(AGE_GROUP_CAMPUS);	}
-		
-		function view_by_age_group($age_group){
-			if( $this->verify_min_level(4))
-			{
-				$this->Person_model->set_hall_id($this->profile_data['hall_id']);
-				$this->Person_model->set_age_group($age_group);
-        $data['people'] = $this->Person_model->get_people();
-				
-				$data['title'] = "View People";	
-				
-				$data['subtitle'] = "Hall " . $this->profile_data['hall_id'];
-				if($age_group == AGE_GROUP_PRIMARY){
-					$data['subtitle'] = $data['subtitle']. " | Primary";
-				}
-				if($age_group == AGE_GROUP_CAMPUS){
-					$data['subtitle'] = $data['subtitle']. " | Campus";
-				}				
-				if($age_group == AGE_GROUP_HIGHSCHOOL){
-					$data['subtitle'] = $data['subtitle']. " | Highschoolers";
-				}
-				if($age_group == AGE_GROUP_INTERMEDIATE){
-					$data['subtitle'] = $data['subtitle']. " | Intermediates";
-				}				
-				
-        $data['_view'] = 'person/index';
-        $this->load->view('mainpage',$data);	
-			}
-		}			
-
     /*
      * Adding a new person
      */
@@ -187,33 +146,22 @@ class User extends MY_Controller{
 			{				
         if(isset($_POST) && count($_POST) > 0)     
         {   
-            $params = array(
-				'age_group_id' => $this->input->post('age_group_id'),
-				'hall_id' => $this->input->post('hall_id'),
-				'first_name' => $this->input->post('first_name'),
-				'last_name' => $this->input->post('last_name'),
-				'gender' => $this->input->post('gender'),
-				'dob' => $this->input->post('dob'),
-				'email' => $this->input->post('email'),
-				'mobile' => $this->input->post('mobile'),
-				'address' => $this->input->post('address'),
-            );
-            
-            $person_id = $this->Person_model->add_person($params);
-            redirect('person/index');
+					$user_data = [
+						'username'   => $this->input->post('username'),
+						'passwd'     => $this->input->post('password'),
+						'email'      => $this->input->post('email'),
+						'auth_level' => '1', // 9 if you want to login @ examples/index.
+					];
+          
+          
+          $this->create_user($user_data);
+          redirect('person/index');
         }
         else
         {
-			$data['genders'] = array('Male', 'Female');
-			
-			$this->load->model('Age_group_model');
-			$data['all_age_groups'] = $this->Age_group_model->get_all_age_groups();
-
-			$this->load->model('Hall_model');
-			$data['all_halls'] = $this->Hall_model->get_all_halls();
-            
-			$data['_view'] = 'person/add';
-			$this->load->view('mainpage',$data);
+					$data['title'] = "Create User";  
+					$data['_view'] = 'user/add';
+					$this->load->view('mainpage',$data);
         }
 			}
     }  
