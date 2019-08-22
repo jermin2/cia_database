@@ -16,22 +16,78 @@ class Person extends MY_Controller{
      */
     function index()
     {
-			if( $this->require_role('admin') )
+			if( $this->verify_min_level(9) )
 			{	
-        $data['people'] = $this->Person_model->get_all_people();
-        
+        $data['people'] = $this->Person_model->get_people();
 				
+				$data['title'] = "View All People";
         $data['_view'] = 'person/index';
         $this->load->view('mainpage',$data);
 			}
+			/*
+			 * People with auth level of 4 can only see people in there hall
+			 */
+			else if( $this->require_min_level(4))
+			{
+				$this->view_by_hall();
+				/**
+				$this->Person_model->set_hall_id($this->profile_data['hall_id']);
+        $data['people'] = $this->Person_model->get_people();
+				
+					
+        $data['_view'] = 'person/index';
+        $this->load->view('mainpage',$data);	
+**/				
+			}
     }
+		
+		function view_by_hall(){
+			if( $this->verify_min_level(4))
+			{
+				$this->Person_model->set_hall_id($this->profile_data['hall_id']);
+        $data['people'] = $this->Person_model->get_people();
+				
+				$data['title'] = "View People";	
+				$data['subtitle'] = "By Hall " . $this->profile_data['hall_id'];		
+        $data['_view'] = 'person/index';
+        $this->load->view('mainpage',$data);	
+			}
+		}
+
+		function view_hs(){
+			$this->view_by_age_group(AGE_GROUP_HIGHSCHOOL);	
+		}
+		function view_int(){$this->view_by_age_group(AGE_GROUP_INTERMEDIATE);	}
+		
+		function view_by_age_group($age_group){
+			if( $this->verify_min_level(4))
+			{
+				$this->Person_model->set_hall_id($this->profile_data['hall_id']);
+				$this->Person_model->set_age_group($age_group);
+        $data['people'] = $this->Person_model->get_people();
+				
+				$data['title'] = "View People";	
+				
+				$data['subtitle'] = "Hall " . $this->profile_data['hall_id'];
+				
+				if($age_group == AGE_GROUP_HIGHSCHOOL){
+					$data['subtitle'] = $data['subtitle']. " | Highschoolers";
+				}
+				if($age_group == AGE_GROUP_INTERMEDIATE){
+					$data['subtitle'] = $data['subtitle']. " | Intermediates";
+				}				
+				
+        $data['_view'] = 'person/index';
+        $this->load->view('mainpage',$data);	
+			}
+		}			
 
     /*
      * Adding a new person
      */
     function add()
     {
-			if( $this->require_role('admin') )
+			if( $this->require_min_level(4) )
 			{				
         if(isset($_POST) && count($_POST) > 0)     
         {   
@@ -60,8 +116,8 @@ class Person extends MY_Controller{
 			$this->load->model('Hall_model');
 			$data['all_halls'] = $this->Hall_model->get_all_halls();
             
-            $data['_view'] = 'person/add';
-            $this->load->view('mainpage',$data);
+			$data['_view'] = 'person/add';
+			$this->load->view('mainpage',$data);
         }
 			}
     }  

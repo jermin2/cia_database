@@ -10,7 +10,8 @@ class Person_model extends CI_Model
     {
         parent::__construct();
     }
-    
+		
+		
     /*
      * Get person by people_id
      */
@@ -18,21 +19,32 @@ class Person_model extends CI_Model
     {
         return $this->db->get_where('cia12_people',array('people_id'=>$people_id))->row_array();
     }
-        
-    /*
-     * Get all people
-     */
-    function get_all_people()
-    {
-				return $this->db->query('SELECT people_id, first_name, last_name, gender, cia12_age_group.age_group_name, email, hall_name, mobile
-													FROM cia12_people, cia12_age_group, cia12_halls
-													WHERE cia12_people.age_group_id = cia12_age_group.age_group_id
-													AND cia12_people.hall_id = cia12_halls.hall_id')->result_array();
+    
+		function set_hall_id($hall_id)
+		{
+			$this->db->where('cia12_halls.hall_id', $hall_id);		
+		}			
+				
+		function get_people()
+		{
+			$this->db->select('people_id, first_name, last_name, gender, age_group_name, email, hall_name, mobile');
+			$this->db->from('cia12_people');
+			$this->db->from('cia12_age_group');
+			$this->db->where('cia12_people.age_group_id = cia12_age_group.age_group_id');	
+			$this->db->from('cia12_halls');
+			$this->db->where('cia12_people.hall_id = cia12_halls.hall_id');
+			$this->db->where('cia12_people.age_group_id = cia12_age_group.age_group_id');
 
-
-        //$this->db->order_by('people_id', 'desc');
-        //return $this->db->get('cia12_people')->result_array();
-    }
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+		
+		function set_age_group($age_group_id)
+		{
+			$this->db->where('cia12_people.age_group_id >', $age_group_id);
+			$this->db->where('cia12_people.age_group_id <', $age_group_id + 10);	
+		}
+		
         
     /*
      * function to add new person

@@ -24,13 +24,6 @@ class Event extends MY_Controller{
         $data['_view'] = 'event/index';
         $this->load->view('mainpage',$data);
 			}
-			
-			if ($this->require_role('viewer') )
-			{	
-        $data['events'] = $this->Event_model->get_all_events();
-        $data['_view'] = 'event/index';
-        $this->load->view('mainpage',$data);
-			}
     }
 		
 		

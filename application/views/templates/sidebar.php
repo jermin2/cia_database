@@ -6,16 +6,34 @@
 			{
 				echo '
 			<li class="nav-item">
-				<a class="nav-link active" href="#">
+				<a class="nav-link active" href="/welcome/index">
 					Dashboard <span class="sr-only">(current)</span>
 				</a>
 			</li>
 
 			<li class="active nav-item">
 				<a href="#peopleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">People</a>
-				<ul class="nav collapse list-unstyled" id="peopleSubmenu">
-					<li><a class="nav-link" href="/person/add">&nbsp; Create New</a></li>
+				<ul class="nav collapse list-unstyled" id="peopleSubmenu">';
+				
+				if($auth_level > 4)
+				{
+				echo '<li><a class="nav-link" href="/person/add">&nbsp; Create New</a></li>';
+				}
+				
+				echo 
+					'<li><a class="nav-link" href="/person/view_by_hall">&nbsp; View My Hall</a></li>';
+				if($serving_hs) echo '<li><a class="nav-link" href="/person/view_hs">&nbsp; View Highschoolers</a></li>';
+				if($serving_int) echo '<li><a class="nav-link" href="/person/view_int">&nbsp; View Intermediates</a></li>';
+					
+				if($auth_level==9)
+				{
+					echo
+					'
 					<li><a class="nav-link" href="/person/index">&nbsp; View All</a></li>
+					';
+				}
+					echo
+					'
 				</ul>
 			</li>';
 			}

@@ -20,9 +20,7 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		
-		
-		if( $this->verify_min_level(1) )
+		if( $this->require_min_level(1) )
 		{
 			//load the user profile
 			

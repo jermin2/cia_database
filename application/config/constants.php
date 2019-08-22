@@ -95,6 +95,12 @@ define('CATEGORY_HS', 2);
 define('CATEOGRY_CAM', 3);
 define('CATEGORY_COM', 4);
 
+define('AGE_GROUP_PRIMARY', 10);
+define('AGE_GROUP_INTERMEDIATE', 20);
+define('AGE_GROUP_HIGHSCHOOL', 30);
+define('AGE_GROUP_CAMPUS', 40);
+define('AGE_GROUP_COMMUNITY', 50);
+
 define('EVENT_APPOINT', 0);
 define('EVENT_SMALLGROUP', 1);
 define('EVENT_GROUPMEET', 2);
