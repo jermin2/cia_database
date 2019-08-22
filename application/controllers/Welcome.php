@@ -32,7 +32,7 @@ class Welcome extends MY_Controller {
 			$data['serving_int'] = $this->profile_data['serving_int']==1?"true":"";
 			$data['serving_campus'] = $this->profile_data['serving_campus']==1?"true":"";;
 
-			$data['_view'] = 'HS-Welcome';
+			$data['_view'] = 'dashboard';
 			$this->load->view('mainpage', $data);
 
 		}

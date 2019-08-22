@@ -68,7 +68,8 @@ class My_auth_model extends Auth_model {
 			//Load user profile data
 			//================================
       $selected_columns = array(
-        'serving_hs',
+        'serving_primary',
+				'serving_hs',
 				'serving_int',
 				'serving_campus',
       );

@@ -39,6 +39,7 @@ protected function _set_user_variables()
 		'hall_id' => $this->auth_data->hall_id,
 		'people_id' => $this->auth_data->people_id,
 		
+		'serving_primary' => $this->auth_data->serving_primary,
 		'serving_hs' => $this->auth_data->serving_hs,
 		'serving_int' => $this->auth_data->serving_int,
 		'serving_campus' => $this->auth_data->serving_campus,

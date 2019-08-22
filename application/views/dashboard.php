@@ -6,6 +6,10 @@
 <div class="text-center">
 <?php  
 $default = true;
+if(($serving_children)){
+	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="CHL"/>';
+	$default=false;
+}
 if(($serving_hs)){
 	echo '<input type="button" class="btn ' . ($default ? 'btn-success' : '') . '" value="HS"/>';
 	$default=false;

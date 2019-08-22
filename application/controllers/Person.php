@@ -53,11 +53,10 @@ class Person extends MY_Controller{
         $this->load->view('mainpage',$data);	
 			}
 		}
-
-		function view_hs(){
-			$this->view_by_age_group(AGE_GROUP_HIGHSCHOOL);	
-		}
+		function view_primary(){$this->view_by_age_group(AGE_GROUP_PRIMARY);	}
+		function view_hs(){$this->view_by_age_group(AGE_GROUP_HIGHSCHOOL);}
 		function view_int(){$this->view_by_age_group(AGE_GROUP_INTERMEDIATE);	}
+		function view_campus(){$this->view_by_age_group(AGE_GROUP_CAMPUS);	}
 		
 		function view_by_age_group($age_group){
 			if( $this->verify_min_level(4))
@@ -69,7 +68,12 @@ class Person extends MY_Controller{
 				$data['title'] = "View People";	
 				
 				$data['subtitle'] = "Hall " . $this->profile_data['hall_id'];
-				
+				if($age_group == AGE_GROUP_PRIMARY){
+					$data['subtitle'] = $data['subtitle']. " | Primary";
+				}
+				if($age_group == AGE_GROUP_CAMPUS){
+					$data['subtitle'] = $data['subtitle']. " | Campus";
+				}				
 				if($age_group == AGE_GROUP_HIGHSCHOOL){
 					$data['subtitle'] = $data['subtitle']. " | Highschoolers";
 				}

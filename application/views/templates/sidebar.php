@@ -22,9 +22,10 @@
 				
 				echo 
 					'<li><a class="nav-link" href="/person/view_by_hall">&nbsp; View My Hall</a></li>';
+				if($serving_primary) echo '<li><a class="nav-link" href="/person/view_primary">&nbsp; View Children</a></li>';	
 				if($serving_hs) echo '<li><a class="nav-link" href="/person/view_hs">&nbsp; View Highschoolers</a></li>';
 				if($serving_int) echo '<li><a class="nav-link" href="/person/view_int">&nbsp; View Intermediates</a></li>';
-					
+				if($serving_campus) echo '<li><a class="nav-link" href="/person/view_campus">&nbsp; View Campus</a></li>';	
 				if($auth_level==9)
 				{
 					echo
