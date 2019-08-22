@@ -19,7 +19,7 @@
     </tr>
 	<?php foreach($events as $c){ ?>
     <tr>
-		<td><?php echo $c['event_name']; ?></td>
+		<td><a href="<?php echo site_url('event/edit/'.$c['event_id']); ?>"><?php echo $c['event_name']; ?></a></td>
 		<td><?php echo $c['event_type']; ?></td>
 		<td><?php echo $c['category_name']; ?></td>
 		
