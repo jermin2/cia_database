@@ -127,7 +127,7 @@ class Person extends MY_Controller{
     }  
 	function editself()
 	{
-		if( $this->require_role('viewer') )
+		if( $this->require_min_level(1) )
 		{		
 			$people_id = $this->profile_data['people_id'];
 		

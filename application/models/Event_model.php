@@ -19,24 +19,29 @@ class Event_model extends CI_Model
         return $this->db->get_where('cia12_events',array('event_id'=>$event_id))->row_array();
     }
 		
+		function set_hall_id($hall_id)
+		{
+			$this->db->where('cia12_events.hall_id', $hall_id);
+		}
+		
+		function set_event_type_id($event_type_id)
+		{
+			$this->db->where('cia12_events.event_type_id', $event_type_id);
+		}
+		
+		function set_category_id($category_id)
+		{
+			$this->db->where('cia12_events.category_id', $category_id);
+		}
 		
 		
-		function get_event_by_options($hall_id = NULL, $event_type_id = NULL, $category_id = NULL)
+		function get_events_by_options()
 		{
 			$this->db->select('event_id, event_type, category_name, hall_name, cia12_events.event_name, date, location, comments');
 			$this->db->from('cia12_events, cia12_event_type, cia12_category, cia12_halls');
 			$this->db->where('cia12_events.event_type_id = cia12_event_type.event_type_id');
-			if(isset($event_type_id)){
-				$this->db->where('cia12_events.event_type_id', $event_type_id);
-			}					
-			$this->db->where('cia12_events.category_id = cia12_category.category_id');
-			if(isset($category_id)){
-				$this->db->where('cia12_events.category_id', $category_id);
-			}			
+			$this->db->where('cia12_events.category_id = cia12_category.category_id');	
 			$this->db->where('cia12_events.hall_id = cia12_halls.hall_id');
-			if(isset($hall_id)){
-				$this->db->where('cia12_events.hall_id', $hall_id);
-			}
 			$query = $this->db->get();
 			return $query->result_array();	
 			

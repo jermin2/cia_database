@@ -35,7 +35,7 @@
 	<div class="form-group row">
 		<label for="hall" class="col-md-2 control-label">Hall</label>
 		<div class="col-md-4">
-			<select name="hall_id" class="form-control" readonly>
+			<select name="hall_id" class="form-control">
 				<?php 
 				foreach($all_halls as $hall)
 				{

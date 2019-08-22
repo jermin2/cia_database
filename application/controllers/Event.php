@@ -21,23 +21,48 @@ class Event extends MY_Controller{
 			if( $this->require_role('admin') )
 			{	
         $data['events'] = $this->Event_model->get_all_events();
+				
+				$data['title'] = "View All Events";
         $data['_view'] = 'event/index';
         $this->load->view('mainpage',$data);
 			}
     }
 		
+		function view_primary(){$this->view_by_age_group(AGE_GROUP_PRIMARY);	}
+		function view_hs(){$this->view_by_age_group(AGE_GROUP_HIGHSCHOOL);}
+		function view_int(){$this->view_by_age_group(AGE_GROUP_INTERMEDIATE);	}
+		function view_campus(){$this->view_by_age_group(AGE_GROUP_CAMPUS);	}		
 		
-		
+		function view_by_age_group($age_group_id)
+		{
+			if( $this->verify_min_level(4))
+			{
+				//If not sufficient auth_level, they can only view their own hall
+				if($this->auth_level < 5)
+				{
+					$this->Event_model->set_hall_id($this->profile_data['hall_id']);
+					$data['subtitle'] = "Hall ".$this->profile_data['hall_id'];
+				}
+				$this->Event_model->set_category_id($age_group_id);
+				$data['events'] = $this->Event_model->get_events_by_options();
+				
+				$data['title'] = "View Events";
+				$data['_view'] = 'event/index';
+				$this->load->view('mainpage',$data);
+			}			
+		}
     /*
      * Listing of events
      */
     function view($hall_id = Null, $event_type_id = Null, $category_id = Null)
     {
 			
-			
 			if( $this->require_role('admin') )
 			{	
-        $data['events'] = $this->Event_model->get_event_by_options( $hall_id, $event_type_id, $category_id);
+				$this->Event_model->set_hall_id($hall_id);
+				$this->Event_model->set_event_type_id($event_type_id);
+				$this->Event_model->category_id($category_id);
+        $data['events'] = $this->Event_model->get_events_by_options();
         
         $data['_view'] = 'event/index';
         $this->load->view('mainpage',$data);

@@ -3,7 +3,7 @@
 	<div class="form-group row">
 		<label for="event_type_id" class="col-md-2 control-label">Event Type</label>
 		<div class="col-md-4">
-			<select name="event_type_id" class="form-control">
+			<select name="event_type_id_sel" class="form-control" disabled="disabled">
 				<option value="">select event type</option>
 				<?php 
 				foreach($all_event_types as $event_type)
@@ -14,6 +14,7 @@
 				} 
 				?>
 			</select>
+			<input name="event_type_id" hidden="true" id="event_type_id"  value="<?php echo $event['event_type_id'] ?>" />
 		</div>
 	</div>
 	<div class="form-group row">
@@ -31,14 +32,13 @@
 				?>
 			</select>
 			
-			<input id="category_id" value="<?php echo $event['category_id'] ?>" />
-			<div id="output"></div>
+			<input name="category_id" hidden="true" id="category_id"  value="<?php echo $event['category_id'] ?>" />
 		</div>
 	</div>
 	<div class="form-group row">
 		<label for="hall" class="col-md-2 control-label">Hall</label>
 		<div class="col-md-4">
-			<select name="hall_id" class="form-control">
+			<select name="hall_id_sel" class="form-control" disabled="disabled">
 				<option value="">select hall</option>
 				<?php 
 				foreach($all_halls as $hall)
@@ -49,6 +49,7 @@
 				} 
 				?>
 			</select>
+			<input name="hall_id" hidden="true" id="hall_id"  value="<?php echo $event['hall_id'] ?>" />
 		</div>
 	</div>
 	<div class="form-group row">
@@ -132,9 +133,4 @@ function EditData(button){
 		button.getElementsByTagName("input")[0].value="0";		
 	}
 }
-
-$(function(){
-    var select_val = $('#category_id_sel option:selected').val();
-    $('#category_id').val(select_val);
-});
 </script>

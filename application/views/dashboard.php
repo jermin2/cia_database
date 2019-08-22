@@ -34,16 +34,16 @@ if(($serving_campus)){
 
 <div class="collapse" id="collapseExample">-->
 <h4 class="h3 center" >Weekly Meeting</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_GROUPMEET .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success navlink">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_GROUPMEET .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_GROUPMEET .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink">New</a> 
+	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_GROUPMEET .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 <hr />
 	<h4 class="h3 center" >Small Group</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_SMALLGROUP .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success navlink" id="test">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_SMALLGROUP .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_SMALLGROUP .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink" id="test">New</a> 
+	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_SMALLGROUP .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 	<hr />
 <h4 class="h3 center" >Appointment</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_APPOINT .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-success navlink">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_APPOINT .'/'. CATEGORY_HS); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_APPOINT .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink">New</a> 
+	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_APPOINT .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 	
 </div>	
 	
@@ -65,16 +65,16 @@ $(function(){
 			 
 			 switch( default_val) {
 				 case "CHL":
-					cat_type_id = "<?php echo CATEGORY_PRI ?>";
+					cat_type_id = "<?php echo AGE_GROUP_PRIMARY ?>";
 					break;
 				 case "INT":
-					cat_type_id = "<?php echo CATEGORY_INT ?>";
+					cat_type_id = "<?php echo AGE_GROUP_INTERMEDIATE ?>";
 					break;
 				case "HS":
-					cat_type_id = "<?php echo CATEGORY_HS ?>";
+					cat_type_id = "<?php echo AGE_GROUP_HIGHSCHOOL ?>";
 					break;	
 				case "CAMPUS":
-					cat_type_id = "<?php echo CATEGORY_CAMPUS ?>";
+					cat_type_id = "<?php echo AGE_GROUP_CAMPUS ?>";
 					break;
 						
 			 }
@@ -83,7 +83,7 @@ $(function(){
 			 var x = document.getElementsByClassName("navlink");
 			 for(i=0; i<x.length; i++){
 				 var link = x[i].href;
-				 x[i].href = link.substring(0, link.length-1) + cat_type_id;
+				 x[i].href = link.substring(0, link.length-2) + cat_type_id;
 			 }
 
 		 }
@@ -100,14 +100,17 @@ $('input[type=button]').click(function() {
 	 var cat_type_id = "<?php echo CATEGORY_INT ?>"
 	 
 	 switch( $(this).val()) {
+		 case "CHL":
+			cat_type_id = "<?php echo AGE_GROUP_PRIMARY ?>";
+			break;
 		 case "INT":
-			cat_type_id = "<?php echo CATEGORY_INT ?>";
+			cat_type_id = "<?php echo AGE_GROUP_INTERMEDIATE ?>";
 			break;
 		case "HS":
-			cat_type_id = "<?php echo CATEGORY_HS ?>";
+			cat_type_id = "<?php echo AGE_GROUP_HIGHSCHOOL ?>";
 			break;	
 		case "CAMPUS":
-			cat_type_id = "<?php echo CATEGORY_CAMPUS ?>";
+			cat_type_id = "<?php echo AGE_GROUP_CAMPUS ?>";
 			break;					
 	 }
 
@@ -115,7 +118,7 @@ $('input[type=button]').click(function() {
 	 var x = document.getElementsByClassName("navlink");
 	 for(i=0; i<x.length; i++){
 		 var link = x[i].href;
-		 x[i].href = link.substring(0, link.length-1) + cat_type_id;
+		 x[i].href = link.substring(0, link.length-2) + cat_type_id;
 	 }
 });	 
 

@@ -4,11 +4,14 @@
 
 <table class="table table-striped table-bordered">
     <tr>
-		<th>Event Id</th>
+		<th>Name</th>
 		<th>Event Type Id</th>
 		<th>Category Id</th>
-		<th>Hall</th>
-		<th>Name</th>
+		
+		<?php if($auth_level > 4){
+			echo '<th>Hall</th>';
+		}	?>
+		
 		<th>Date</th>
 		<th>Location</th>
 		<th>Comments</th>
@@ -16,11 +19,14 @@
     </tr>
 	<?php foreach($events as $c){ ?>
     <tr>
-		<td><?php echo $c['event_id']; ?></td>
+		<td><?php echo $c['event_name']; ?></td>
 		<td><?php echo $c['event_type']; ?></td>
 		<td><?php echo $c['category_name']; ?></td>
-		<td><?php echo $c['hall_name']; ?></td>
-		<td><?php echo $c['event_name']; ?></td>
+		
+		<?php if($auth_level > 4){
+			echo '<td>' . $c['hall_name'] . '</td>';
+		}	?>
+
 		<td><?php echo $c['date']; ?></td>
 		<td><?php echo $c['location']; ?></td>
 		<td><?php echo $c['comments']; ?></td>
