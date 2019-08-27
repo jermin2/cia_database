@@ -90,12 +90,12 @@
 				</ul>
 			</li>
 			
-			
-
-			<li class="nav-item">
-				<a class="nav-link" href="#">
-					Users
-				</a>
+			<li class="active nav-item">
+				<a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">Users</a>
+				<ul class="nav collapse list-unstyled" id="userSubmenu">
+					<li><a class="nav-link" href="/user/add">&nbsp; Create New</a></li>
+					<li><a class="nav-link" href="/user/index">&nbsp; View All</a></li>
+				</ul>
 			</li>';
 			}
 			?>

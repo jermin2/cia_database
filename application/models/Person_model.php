@@ -24,10 +24,24 @@ class Person_model extends CI_Model
 		{
 			$this->db->where('cia12_halls.hall_id', $hall_id);		
 		}			
+		
+		function get_people_namelist()
+		{
+			$this->db->select('CONCAT(first_name," ",last_name) as label, people_id');
+			$this->db->from('cia12_people');
+			//$this->db->from('cia12_age_group');
+			//$this->db->where('cia12_people.age_group_id = cia12_age_group.age_group_id');	
+			$this->db->from('cia12_halls');
+			$this->db->where('cia12_people.hall_id = cia12_halls.hall_id');
+			//$this->db->where('cia12_people.age_group_id = cia12_age_group.age_group_id');
+
+			$query = $this->db->get();
+			return $query->result_array();
+		}			
 				
 		function get_people()
 		{
-			$this->db->select('people_id, first_name, last_name, gender, age_group_name, email, hall_name, mobile');
+			$this->db->select('people_id, (first_name + " " + last_name) as full_name, first_name, last_name, gender, age_group_name, email, hall_name, mobile');
 			$this->db->from('cia12_people');
 			$this->db->from('cia12_age_group');
 			$this->db->where('cia12_people.age_group_id = cia12_age_group.age_group_id');	
@@ -36,6 +50,23 @@ class Person_model extends CI_Model
 			$this->db->where('cia12_people.age_group_id = cia12_age_group.age_group_id');
 
 			$query = $this->db->get();
+			return $query->result_array();
+		}
+		//(first_name + last_name) as full_name, first_name, last_name, 
+		
+		//'SELECT `people_id` FROM `cia12_people` WHERE not exists (select people_id FROM cia12_user_profiles where cia12_user_profiles.people_id = cia12_people.people_id)';
+
+		function get_people_excluded($people_ids)
+		{
+			$statement = 'SELECT `people_id`, `first_name`, `last_name` FROM `cia12_people` WHERE not exists (select people_id FROM cia12_user_profiles where cia12_user_profiles.people_id = cia12_people.people_id)';
+			$query = $this->db->query($statement);
+			
+			
+			//$this->db->select('people_id');
+			//$this->db->from('cia12_people');
+			//$this->db->where('not exists (select people_id FROM cia12_user_profiles where cia12_user_profiles.people_id = cia12_people.people_id)');
+			
+			//$query = $this->db->get();
 			return $query->result_array();
 		}
 		

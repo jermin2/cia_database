@@ -18,6 +18,10 @@
 	<!-- Custom style for this template -->
 	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=2" rel="stylesheet">
 	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
 </head>
 <body>
 

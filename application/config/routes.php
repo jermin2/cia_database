@@ -53,3 +53,6 @@ $route[LOGIN_PAGE] = 'auth/login';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['ajax-request'] = 'Event_person/ajaxRequest';
+$route['ajax-requestPost']['post'] = 'Event_person/ajaxRequestPost';

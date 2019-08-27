@@ -199,6 +199,7 @@ class Event extends MY_Controller{
         {
 					if(isset($_POST) && count($_POST) > 0)     
 					{   
+				
 						$params = array(
 							'event_type_id' => $this->input->post('event_type_id'),
 							'category_id' => $this->input->post('category_id'),
@@ -243,6 +244,12 @@ class Event extends MY_Controller{
 			
 						$this->load->model('Event_person_model');
 						$data['event_people'] = $this->Event_person_model->get_event_person_by_event_id($event_id);
+						
+						$this->load->model('Person_model');
+						
+						$this->Person_model->set_hall_id( $this->profile_data['hall_id']);
+						$namelist = $this->Person_model->get_people_namelist();
+						$data['namelist'] = $namelist;
 
 						$data['_view'] = 'event/edit';
 						$this->load->view('mainpage',$data);

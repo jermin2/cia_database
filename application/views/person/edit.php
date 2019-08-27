@@ -1,6 +1,11 @@
-<?php echo form_open('person/edit/'.$person['people_id'],array("class"=>"form-horizontal")); ?>
-<div class="h3 col-md-6 center"> Edit a person </div>
-<br />
+<?php if($auth_level>=5)
+{
+	echo form_open('person/edit/'.$person['people_id'],array("class"=>"form-horizontal")); 
+}
+else
+	echo form_open('person/editself',array("class"=>"form-horizontal")); 
+	?>
+	
 
 	<div class="form-group row">
 		<label for="first_name" class="col-md-2 control-label">First Name</label>
@@ -55,7 +60,16 @@
 	<div class="form-group row">
 		<label for="hall" class="col-md-2 control-label">Hall</label>
 		<div class="col-md-4">
-			<select name="hall_id" class="form-control">
+			<?php if($auth_level < 5)
+			{ 
+				echo '<input name="hall_id" hidden="true" id="hall_id"  value="'.$person['hall_id'].'" />';
+				echo '<select name="hall_id_sel" class="form-control" disabled="disabled">';
+			} 
+			else
+			{
+				echo '<select name="hall_id" class="form-control">';
+			}
+			?>
 				<option value="">select hall</option>
 				<?php 
 				foreach($all_halls as $hall)
@@ -66,6 +80,7 @@
 				} 
 				?>
 			</select>
+			
 		</div>
 	</div>
 	<div class="form-group row">
@@ -94,3 +109,4 @@
 	</div>
 	
 <?php echo form_close(); ?>
+

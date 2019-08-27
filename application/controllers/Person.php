@@ -91,7 +91,7 @@ class Person extends MY_Controller{
      */
     function add()
     {
-			if( $this->require_min_level(4) )
+			if( $this->require_min_level(5) )
 			{				
         if(isset($_POST) && count($_POST) > 0)     
         {   
@@ -150,8 +150,8 @@ class Person extends MY_Controller{
 					'address' => $this->input->post('address'),
                 );
 
-                $this->Person_model->update_person($people_id,$params);            
-                redirect('person/index');
+					$this->Person_model->update_person($people_id,$params);            
+					redirect('person/editself');
             }
             else
             {
@@ -163,7 +163,8 @@ class Person extends MY_Controller{
 				$this->load->model('Hall_model');
 				$data['all_halls'] = $this->Hall_model->get_all_halls();
 
-				$data['_view'] = 'person/edit';
+				$data['title']="My Profile";
+				$data['_view'] = '/person/edit';
 				$this->load->view('mainpage',$data);
             }
         }
@@ -211,6 +212,7 @@ class Person extends MY_Controller{
 				$this->load->model('Hall_model');
 				$data['all_halls'] = $this->Hall_model->get_all_halls();
 
+				$data['title']="Edit a Person";
 				$data['_view'] = 'person/edit';
 				$this->load->view('mainpage',$data);
             }

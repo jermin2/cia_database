@@ -77,16 +77,30 @@
 		</div>
 	</div>
 		
+	<div class="form-group row">
+		<div class="col-sm-offset-4 col-sm-8">
+			<button type="submit" class="btn btn-success">Save</button>
+        </div>
+	</div>
 	
-	<div>
-	<label for="comment" class="col-md-2 control-label">
-		<h4> Attendence </h4></label>
+<?php echo form_close(); ?>		
+		<div>
+		<label for="comment" class="col-md-2 control-label">
+			<h4> Attendence </h4>
+			<br />
+		</label>
+	</div>
+	<div class="form-group row">
+		<label for="autocomplete" class="col-md-3 control-label">Add a person</label>
+		<div class="col-md-4">
+			<input id="autocomplete" class="form-control">
 		</div>
+		<input id="people_id" type="text" name="people_id" hidden="hidden" >
+	</div>
 
-<table class="table table-striped table-bordered" >
+<table id="attendenceTable" class="table table-striped table-bordered" >
     <tr >
 		<th>Full Name</th>
-		<th>Event Name</th>
 		<th>Attendence</th>
 		<th>Comment</th>
 		<th>Actions</th>
@@ -94,39 +108,89 @@
 	<?php foreach($event_people as $c){ ?>
     <tr>
 		<td><?php echo $c['full_name']; ?></td>
-		<td><?php echo $c['event_name']; ?></td>
-		<td><a href="#" class="btn btn-xs <?php echo ($c['registered']==1 ? 'btn-success' : 'btn-secondary' )?>">Reg</a> 
-				<a href="#" class="btn btn-xs <?php echo ($c['attended']==1 ? 'btn-success' : 'btn-secondary' )?>">Atten</a>		
-				<a href="#" class="btn btn-xs <?php echo ($c['paid']==1 ? 'btn-success' : 'btn-secondary' )?>">Paid</a>		</td>
+		<td>
+			<!-- <a href="#" class="btn btn-xs <?php echo ($c['registered']==1 ? 'btn-success' : 'btn-secondary' )?>">Reg</a> -->
+			<a href="#" class="btn btn-xs <?php echo ($c['attended']==1 ? 'btn-success' : 'btn-secondary' )?>">Atten</a>		
+			<!-- <a href="#" class="btn btn-xs <?php echo ($c['paid']==1 ? 'btn-success' : 'btn-secondary' )?>">Paid</a>		-->
+		</td>
 		<td><input type="text" name="comment[]" value="<?php echo $c['comment']; ?>"></td>
 		<td>
-            <a href="<?php echo site_url('event_person/edit/'.$c['event_people_id']); ?>" class="btn btn-info btn-xs">Edit</a> 
+            <!-- <a href="<?php echo site_url('event_person/edit/'.$c['event_people_id']); ?>" class="btn btn-info btn-xs">Edit</a> 	-->
             <a href="<?php echo site_url('event_person/remove/'.$c['event_people_id']); ?>" class="btn btn-danger btn-xs">Delete</a>
         </td>
     </tr>
 	<?php } ?>
 </table>
 	
-	<div class="form-group row">
-		<div class="col-sm-offset-4 col-sm-8">
-			<button type="submit" class="btn btn-success">Save</button>
-        </div>
-	</div>
-	
-<?php echo form_close(); ?>
-
 
 <script type="text/javascript">
-function EditData(button){
+var namelist = <?php echo json_encode($namelist); ?>;
+
+$( "#autocomplete" ).autocomplete({
+  source: <?php echo json_encode($namelist) ?>,
 	
-	if (button.getElementsByTagName("input")[0].value == "0")
-	{
-		button.style.backgroundColor="green";
-		button.getElementsByTagName("input")[0].value="1";
-	} else
-	{
-		button.style.backgroundColor="white";
-		button.getElementsByTagName("input")[0].value="0";		
-	}
+	select: function( event, ui ) {
+
+		document.getElementById('people_id').value = ui.item.people_id;
+		
+		full_name = ui.item.value;
+		people_id = ui.item.people_id;
+
+		//Add data to the database
+		event_type_id = ajaxcall(people_id, full_name);
+		
+		//Reset the textfield
+		$( "#autocomplete" ).autocomplete( "close");
+		document.getElementById('autocomplete').value="";
+		return false;
+	},
+	
+	_renderItem: function( ul, item ) {
+		console.log(item.value);
+  return $( "<li>" )
+    .attr( "data-value", item.value )
+    .append( item.label )
+    .appendTo( ul );
+}
+});
+function addRow(id, full_name){
+	var table = document.getElementById('attendenceTable');
+	var row = table.insertRow(1);
+	
+	// Insert rows
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+	var cell4 = row.insertCell(3);
+	
+	//Add some text to the new cells
+	cell1.innerHTML = full_name;
+	cell2.innerHTML = ' <a href="#" class="btn btn-xs btn-success">Atten</a>';
+	cell3.innerHTML = "";
+	cell4.innerHTML = ' <a href="/event_person/remove/'.concat(id,'" class="btn btn-danger btn-xs">Delete</a>');	
+	
+}
+function ajaxcall(people_id, full_name){
+	var event_id = <?php echo $event['event_id']; ?>;
+	var event_type_id = 1;
+	$.ajax({
+		 url: '/ajax-requestPost',
+		 type: 'POST',
+		 data: {people_id: people_id, event_id: event_id},
+		 error: function() {
+				alert('Something is wrong');
+		 },
+		 success: function(data) {
+			event_type_id = data;
+			
+			console.log(event_type_id);
+			//alert(data); 	
+			
+			//Add the rows to the table
+			addRow(event_type_id, full_name);
+		 }
+	});
+	return event_type_id;
+
 }
 </script>

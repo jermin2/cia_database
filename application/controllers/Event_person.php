@@ -11,6 +11,26 @@ class Event_person extends MY_Controller{
         $this->load->model('Event_person_model');
     } 
 
+		public function ajaxRequest(){
+			
+			echo "Inscription success";
+
+		}
+		
+		public function ajaxRequestPost(){
+			
+			$params = array(
+				'people_id' => $this->input->post('people_id'),
+				'event_id' => $this->input->post('event_id'),
+				'attended' => 1,
+			);
+            
+			$this->load->model('Event_person_model');
+			$event_people_id = $this->Event_person_model->add_event_person($params);
+			
+			echo $event_people_id;
+		}
+		
     /*
      * Listing of event_people
      */
@@ -141,8 +161,8 @@ class Event_person extends MY_Controller{
         // check if the event_person exists before trying to delete it
         if(isset($event_person['event_people_id']))
         {
-            $this->Event_person_model->delete_event_person($event_people_id);
-            redirect('event_person/index');
+            $this->Event_person_model->delete_event_person($event_people_id);        
+						redirect($_SERVER['HTTP_REFERER']);
         }
         else
             show_error('The event_person you are trying to delete does not exist.');
