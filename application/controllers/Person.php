@@ -241,5 +241,5 @@ class Person extends MY_Controller{
             show_error('The person you are trying to delete does not exist.');
 			}
     }
-    
+
 }
