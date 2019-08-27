@@ -28,7 +28,7 @@ if(($serving_campus)){
 
 <br />
 
-<div class="text-center">
+<div class="text-center col-md-12">
 
 <!-- <a href='#collapseExample' class="h3 center" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">Highschool</a>
 
