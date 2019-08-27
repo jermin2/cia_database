@@ -191,6 +191,5 @@ function ajaxcall(people_id, full_name){
 		 }
 	});
 	return event_type_id;
-
 }
 </script>
