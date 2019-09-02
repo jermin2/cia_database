@@ -37,7 +37,7 @@ class Event_person_model extends CI_Model
      */
     function get_event_person_by_event_id($event_id)
     {
-			$this->db->select('event_people_id, CONCAT(cia12_people.first_name, " ", cia12_people.last_name) AS full_name, cia12_events.event_name, registered, attended, paid, comment');
+			$this->db->select('event_people_id, cia12_event_people.people_id, CONCAT(cia12_people.first_name, " ", cia12_people.last_name) AS full_name, cia12_events.event_name, registered, attended, paid, comment');
 			$this->db->from('cia12_event_people, cia12_events, cia12_people, cia12_halls');
 			$this->db->where('cia12_event_people.people_id = cia12_people.people_id');
 			$this->db->where('cia12_event_people.event_id', $event_id);

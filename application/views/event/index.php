@@ -14,7 +14,6 @@
 		
 		<th>Date</th>
 		<th>Location</th>
-		<th>Comments</th>
 		<th>Actions</th>
     </tr>
 	<?php foreach($events as $c){ ?>
@@ -29,8 +28,8 @@
 
 		<td><?php echo $c['date']; ?></td>
 		<td><?php echo $c['location']; ?></td>
-		<td><?php echo $c['comments']; ?></td>
 		<td>
+						<a href="<?php echo site_url('event/duplicate/'.$c['event_id']); ?>" class="btn btn-info btn-xs">Repeat</a> 
             <a href="<?php echo site_url('event/edit/'.$c['event_id']); ?>" class="btn btn-info btn-xs">Edit</a> 
             <a href="<?php echo site_url('event/remove/'.$c['event_id']); ?>" class="btn btn-danger btn-xs">Delete</a>
         </td>

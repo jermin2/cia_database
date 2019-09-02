@@ -109,6 +109,53 @@ class Event extends MY_Controller{
 			}
     }  
 
+		function duplicate($event_id)
+		{
+			if( $this->verify_min_level(4) )
+			{
+				//TODO check if the user is in the same hall
+				
+				//Pull out the data from the event
+				$this->load->model('Event_model');
+				$event_data = $this->Event_model->get_event($event_id);
+				
+				//Duplicate the entry
+				$params = array(
+					'event_type_id' => $event_data['event_type_id'],
+					'category_id' => $event_data['category_id'],
+					'hall_id' => $event_data['hall_id'],
+					'event_name' => "testing repeat", //date_create('now')->format('Y-m-d') ,
+					'date' => date_create('now')->format('Y-m-d H:i:s') ,
+					'location' => "",
+					'comments' => "",
+            );	
+				$new_event_id = $this->Event_model->add_event($params);
+				
+				//Add people 
+				////Get the event_people_ids 
+				$this->load->model('Event_person_model');
+				$event_person_data = $this->Event_person_model->get_event_person_by_event_id($event_id);
+				
+				ChromePhp::log($event_id);
+				ChromePhp::log($event_person_data);
+				
+				//add them to the new event
+				foreach($event_person_data as $event_person)
+				{
+					$params = array(
+						'people_id' => $event_person['people_id'],
+						'event_id' => $new_event_id,
+            );
+            
+					$event_people_id = $this->Event_person_model->add_event_person($params);
+					
+				}
+				redirect('event/edit/'.$new_event_id);
+							
+			}
+			
+		}
+		
     /*
      * Adding a new event
      */

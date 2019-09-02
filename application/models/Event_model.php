@@ -54,7 +54,7 @@ class Event_model extends CI_Model
      */
     function get_all_events()
     {
-			$this->db->select('event_id, event_type, category_name, hall_name, cia12_events.event_name, date, location, comments');
+			$this->db->select('event_id, cia12_events.event_type_id, cia12_events.category_id, event_type, category_name, cia12_halls.hall_id, hall_name, cia12_events.event_name, date, location, comments');
 			$this->db->from('cia12_events, cia12_event_type, cia12_category, cia12_halls');
 			$this->db->where('cia12_events.event_type_id = cia12_event_type.event_type_id');
 			$this->db->where('cia12_events.category_id = cia12_category.category_id');
