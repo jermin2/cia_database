@@ -31,7 +31,10 @@
 		<td>
 						<a href="<?php echo site_url('event/duplicate/'.$c['event_id']); ?>" class="btn btn-info btn-xs">Repeat</a> 
             <a href="<?php echo site_url('event/edit/'.$c['event_id']); ?>" class="btn btn-info btn-xs">Edit</a> 
-            <a href="<?php echo site_url('event/remove/'.$c['event_id']); ?>" class="btn btn-danger btn-xs">Delete</a>
+            <?php if($auth_level >= 5)
+						{
+							echo '<a href="'.site_url('event/remove/'.$c['event_id']).'" class="btn btn-danger btn-xs">Delete</a>';
+						}?>
         </td>
     </tr>
 	<?php } ?>

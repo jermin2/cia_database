@@ -295,8 +295,10 @@ class Event extends MY_Controller{
 							'comments' => $this->input->post('comments'),
 						);
 
-						$this->Event_model->update_event($event_id,$params);   
-
+						$this->Event_model->update_event($event_id,$params); 
+						
+ChromePhp::log("test");
+ChromePhp::log($_POST);
 						$event_people_id = $_POST['event_people_id'];
 						$registered = $_POST['registered'];
 						$attended = $_POST['attended'];

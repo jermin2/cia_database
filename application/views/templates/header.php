@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<meta charset = "utf-8"> 
+	<meta charset = "utf-8">
+<title>Church in Auckland Database</title> 	
 	<link rel = "stylesheet" type = "text/css" 
 		href = "<?php echo asset_url(); ?>css/bootstrap.min.css?version=1"> 
 	<script type = 'text/javascript' src = "<?php echo asset_url(); 
