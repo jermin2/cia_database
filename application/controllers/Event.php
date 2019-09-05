@@ -18,9 +18,34 @@ class Event extends MY_Controller{
      */
     function index()
     {
-			if( $this->require_role('admin') )
+			if( $this->verify_min_level(4) )
 			{	
-        $data['events'] = $this->Event_model->get_all_events();
+		
+				if( $this->auth_level == 9 ){
+					$data['events'] = $this->Event_model->get_all_events();
+				}
+				else if ($this->auth_level >= 5)
+				{
+					$this->Event_model->set_hall_id($this->profile_data['hall_id']);
+					$data['events'] = $this->Event_model->get_events_by_options();
+				}
+				else if ($this->auth_level >= 4)
+				{
+					$this->Event_model->set_hall_id($this->profile_data['hall_id']);
+					
+					if( $this->profile_data['serving_primary'] == 1)
+						$category_id_array[] = AGE_GROUP_PRIMARY;
+					if( $this->profile_data['serving_int'] == 1)
+						$category_id_array[] = AGE_GROUP_INTERMEDIATE;
+					if( $this->profile_data['serving_hs'] == 1)
+						$category_id_array[] = AGE_GROUP_HIGHSCHOOL;
+					if( $this->profile_data['serving_campus'] == 1)
+						$category_id_array[] = AGE_GROUP_CAMPUS;
+						
+					$this->Event_model->set_category_id_array($category_id_array);
+					$data['events'] = $this->Event_model->get_events_by_options();
+				}
+
 				
 				$data['title'] = "View All Events";
         $data['_view'] = 'event/index';

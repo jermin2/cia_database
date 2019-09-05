@@ -33,7 +33,10 @@ class Event_model extends CI_Model
 		{
 			$this->db->where('cia12_events.category_id', $category_id);
 		}
-		
+		function set_category_id_array($category_id_array)
+		{
+			$this->db->where_in('cia12_events.category_id', $category_id_array);
+		}		
 		
 		function get_events_by_options()
 		{

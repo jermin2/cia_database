@@ -9,26 +9,61 @@
 					<a href="/Event_person/viewself">My Attendence</a>
 				</li>';
 				}
-					?>
+				?>
+				
 				<?php if($auth_level>=4)
 				{
 					echo '
 				<li>
-					<a href="/welcome/index">Dashboard <span class="sr-only">(current)</span>
-					</a>
-				</li>
+					<a href="/welcome/index">Dashboard <span class="sr-only">(current)</span></a>
+					
+				</li> ';
+				}
+				?>
+				
+				<?php if($auth_level>=4)
+				{
+					echo '
+				<li class="active">
+					<a href="#eventSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Events</a>
+					<ul class="collapse list-unstyled" id="eventSubmenu">';
+					
+					if($auth_level >= 5)
+					{
+						echo '<li><a href="/event/add">&nbsp; Create New</a></li>';
+						echo '<li><a href="/event/index">&nbsp; View All</a></li>';
+					}
+					
+					if($auth_level == 4)
+					{
+						echo '<li><a href="/event/index">&nbsp; View My Events</a></li>';
+					}
+					
+					if($serving_primary) echo '<li><a href="/event/view_primary">&nbsp; View Children</a></li>';	
+					if($serving_hs) echo '<li><a href="/event/view_hs">&nbsp; View Highschoolers</a></li>';
+					if($serving_int) echo '<li><a href="/event/view_int">&nbsp; View Intermediates</a></li>';
+					if($serving_campus) echo '<li><a href="/event/view_campus">&nbsp; View Campus</a></li>';	
 
+					echo '
+					</ul>
+				</li>';
+				}
+				?>
+				
+				<?php if($auth_level>=4)
+				{
+					echo '
 				<li class="active">
 					<a href="#peopleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">People</a>
 					<ul class="collapse list-unstyled" id="peopleSubmenu">';
 					
 					if($auth_level > 4)
 					{
-					echo '<li><a href="/person/add">&nbsp; Create New</a></li>';
+						echo '<li><a href="/person/add">&nbsp; Create New</a></li>';
 					}
 					
-					echo 
-						'<li><a href="/person/view_by_hall">&nbsp; View My Hall</a></li>';
+					echo '<li><a href="/person/view_by_hall">&nbsp; View My Hall</a></li>';
+					
 					if($serving_primary) echo '<li><a href="/person/view_primary">&nbsp; Children</a></li>';	
 					if($serving_hs) echo '<li><a href="/person/view_hs">&nbsp; Highschoolers</a></li>';
 					if($serving_int) echo '<li><a href="/person/view_int">&nbsp; Intermediates</a></li>';
@@ -46,29 +81,7 @@
 				</li>';
 				}
 				?>
-				<?php if($auth_level>=4)
-				{
-					echo '
-				<li class="active">
-					<a href="#eventSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Events</a>
-					<ul class="collapse list-unstyled" id="eventSubmenu">';
-					
-					if($auth_level > 4)
-					{
-						echo '<li><a href="/event/add">&nbsp; Create New</a></li>';
-						echo '<li><a href="/event/index">&nbsp; View All</a></li>';
-					}
-					
-					if($serving_primary) echo '<li><a href="/event/view_primary">&nbsp; View Children</a></li>';	
-					if($serving_hs) echo '<li><a href="/event/view_hs">&nbsp; View Highschoolers</a></li>';
-					if($serving_int) echo '<li><a href="/event/view_int">&nbsp; View Intermediates</a></li>';
-					if($serving_campus) echo '<li><a href="/event/view_campus">&nbsp; View Campus</a></li>';	
-
-					echo '
-					</ul>
-				</li>';
-				}
-				?>
+				
 				<?php if($auth_level == 9)
 				{
 				echo '
