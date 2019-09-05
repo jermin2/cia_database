@@ -20,10 +20,7 @@ class Person_model extends CI_Model
         return $this->db->get_where('cia12_people',array('people_id'=>$people_id))->row_array();
     }
     
-		function set_hall_id($hall_id)
-		{
-			$this->db->where('cia12_halls.hall_id', $hall_id);		
-		}			
+	
 		
 		function get_people_namelist()
 		{
@@ -75,7 +72,10 @@ class Person_model extends CI_Model
 			$this->db->where('cia12_people.age_group_id >', $age_group_id);
 			$this->db->where('cia12_people.age_group_id <', $age_group_id + 10);	
 		}
-		
+		function set_hall_id($hall_id)
+		{
+			$this->db->where('cia12_halls.hall_id', $hall_id);		
+		}		
         
     /*
      * function to add new person

@@ -183,6 +183,22 @@ class Event extends MY_Controller{
 				);
             
         $event_people_id = $this->Event_person_model->add_event_person($params);
+				
+				//Add people in this category to the event
+				$this->load->model('Person_model');
+				$this->Person_model->set_age_group($category_id);
+				$this->Person_model->set_hall_id($hall_id);
+				$people_list = $this->Person_model->get_people();
+				
+				foreach($people_list as $person)
+				{
+					$params = array(
+						'people_id' => $person['people_id'],
+						'event_id' => $event_id,
+            );		
+						
+					$event_people_id = $this->Event_person_model->add_event_person($params);
+				}
 
 				redirect('event/edit/'.$event_id);
 			}
