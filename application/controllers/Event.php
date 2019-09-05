@@ -57,7 +57,7 @@ class Event extends MY_Controller{
     function view($hall_id = Null, $event_type_id = Null, $category_id = Null)
     {
 			
-			if( $this->require_role('admin') )
+			if( $this->verify_min_level(4) )
 			{	
 				$this->Event_model->set_hall_id($hall_id);
 				$this->Event_model->set_event_type_id($event_type_id);
@@ -289,7 +289,7 @@ class Event extends MY_Controller{
 							
 							$this->Event_person_model->update_event_person($id,$event_params);  
 						}					
-						redirect('event/index');
+						redirect('event/edit/'.$event_id);
 					}
 					else
 					{
