@@ -299,6 +299,7 @@ class Event extends MY_Controller{
 						
 ChromePhp::log("test");
 ChromePhp::log($_POST);
+ChromePhp::log($_POST['event_people_id']);
 						$event_people_id = $_POST['event_people_id'];
 						$registered = $_POST['registered'];
 						$attended = $_POST['attended'];
