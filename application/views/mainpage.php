@@ -8,7 +8,7 @@
 
 	<!-- HERE comes Main content -->
 	<!-- <?php echo $_view; ?> -->
-	<div id="content" role="main" class="text-center center">
+	<div id="content">
 		<br />
 		<h2 class="h2 text-center"><?php echo isset($title)?$title:''; ?></h2>
 		<h3 class="h3 text-center"><?php echo isset($subtitle)?$subtitle:''; ?></h3>
@@ -17,4 +17,4 @@
 	</div>
 </div>
 </div>
-<?php $this->load->view('templates/footer'); ?>
+<!-- <?php $this->load->view('templates/footer'); ?> -->

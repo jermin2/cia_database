@@ -19,16 +19,34 @@ class Event_person extends MY_Controller{
 		
 		public function ajaxRequestPost(){
 			
-			$params = array(
-				'people_id' => $this->input->post('people_id'),
-				'event_id' => $this->input->post('event_id'),
-				'attended' => 1,
-			);
-            
-			$this->load->model('Event_person_model');
-			$event_people_id = $this->Event_person_model->add_event_person($params);
-			
-			echo $event_people_id;
+			if($this->input->post('function_id') == "add_person")
+			{
+				$params = array(
+					'people_id' => $this->input->post('people_id'),
+					'event_id' => $this->input->post('event_id'),
+					'attended' => 1,
+				);
+							
+				$this->load->model('Event_person_model');
+				$event_people_id = $this->Event_person_model->add_event_person($params);
+				
+				echo $event_people_id;
+			}
+			else if($this->input->post('function_id') == "toggle")
+			{
+				$event_people_id = $this->input->post('event_people_id');
+				$params = array(
+					'attended' => $this->input->post('attend_val'),
+				);
+							
+				$this->load->model('Event_person_model');
+				$this->Event_person_model->update_event_person($event_people_id, $params);
+				
+				echo "success";
+				
+			}
+			else
+				echo "error";
 		}
 		
     /*

@@ -7,9 +7,14 @@
 	<script type = 'text/javascript' src = "<?php echo asset_url(); 
     ?>js/sample.js"></script> 
 		
+
+		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -20,14 +25,13 @@
 
 
 	<!-- Custom style for this template -->
-	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=9" rel="stylesheet">
+	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=1" rel="stylesheet">
 	
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	
 </head>
 <body>
@@ -44,3 +48,24 @@
 		</li>
 	</ul>
 </nav>
+
+<script>
+$(document).ready(function () {
+
+    $("#sidebar").mCustomScrollbar({
+         theme: "minimal"
+    });
+
+    $('#sidebarCollapse').on('click', function () {
+        // open or close navbar
+        $('#sidebar').toggleClass('active');
+				$('#content').toggleClass('active');
+        // close dropdowns
+        $('.collapse.in').toggleClass('in');
+        // and also adjust aria-expanded attributes we use for the open/closed arrows
+        // in our CSS
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+
+});
+</script>
