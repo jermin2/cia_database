@@ -289,7 +289,7 @@ class Event extends MY_Controller{
 							
 							$this->Event_person_model->update_event_person($id,$event_params);  
 						}					
-						redirect('event/edit/'.$event_id);
+						redirect('event/index');
 					}
 					else
 					{
