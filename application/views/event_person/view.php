@@ -1,5 +1,5 @@
 <h2 class="h2 text-center">Attendence</h2>
-<h3 class="h3 text-center"><?php echo $first_name." ".$last_name; ?></h3>
+<h3 class="h3 text-center"><?php echo $person['first_name']." ".$person['last_name']; ?></h3>
 
 <table class="table table-striped table-bordered" >
     <tr >
@@ -16,9 +16,9 @@
 		<td><?php echo $c['location']; ?></td>
 		<td><?php echo $c['event_type']; ?></td>
 		<td>
-				<a href="#" class="btn btn-xs <?php echo ($c['registered']==1 ? 'btn-success' : 'btn-secondary' )?>">Reg</a> 
+				<!--<a href="#" class="btn btn-xs <?php echo ($c['registered']==1 ? 'btn-success' : 'btn-secondary' )?>">Reg</a> -->
 				<a href="#" class="btn btn-xs <?php echo ($c['attended']==1 ? 'btn-success' : 'btn-secondary' )?>">Atten</a>		
-				<a href="#" class="btn btn-xs <?php echo ($c['paid']==1 ? 'btn-success' : 'btn-secondary' )?>">Paid</a>									
+				<!--<a href="#" class="btn btn-xs <?php echo ($c['paid']==1 ? 'btn-success' : 'btn-secondary' )?>">Paid</a>		-->							
 						</td>
     </tr>
 	<?php } ?>

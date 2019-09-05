@@ -2,6 +2,14 @@
 <nav id="sidebar" class="bg-dark mCustomScrollbar">
 	
 	<ul class="list-unstyled components">
+				<?php if($auth_level>=1)
+				{
+				echo '
+				<li class="active">
+					<a href="/Event_person/viewself">My Attendence</a>
+				</li>';
+				}
+					?>
 				<?php if($auth_level>=4)
 				{
 					echo '
@@ -61,14 +69,6 @@
 				</li>';
 				}
 				?>
-				<?php if($auth_level==1)
-				{
-				echo '
-				<li class="active">
-					<a href="/Event_person/viewself">Attendence</a>
-				</li>';
-				}
-					?>
 				<?php if($auth_level == 9)
 				{
 				echo '

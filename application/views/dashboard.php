@@ -34,16 +34,16 @@ if(($serving_campus)){
 
 <div class="collapse" id="collapseExample">-->
 <h4 class="h3 center" >Weekly Meeting</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_GROUPMEET .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_GROUPMEET .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . $hall_id .'/'. EVENT_GROUPMEET .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink">New</a> 
+	<a href="<?php echo site_url('event/view/'. $hall_id .'/'. EVENT_GROUPMEET .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 <hr />
 	<h4 class="h3 center" >Small Group</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_SMALLGROUP .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink" id="test">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_SMALLGROUP .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . $hall_id .'/'. EVENT_SMALLGROUP .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink" id="test">New</a> 
+	<a href="<?php echo site_url('event/view/'. $hall_id .'/'. EVENT_SMALLGROUP .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 	<hr />
 <h4 class="h3 center" >Appointment</h4>
-	<a href="<?php echo site_url('event/quick_add/' . HALL_3 .'/'. EVENT_APPOINT .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink">New</a> 
-	<a href="<?php echo site_url('event/view/'. HALL_3 .'/'. EVENT_APPOINT .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
+	<a href="<?php echo site_url('event/quick_add/' . $hall_id .'/'. EVENT_APPOINT .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-success navlink">New</a> 
+	<a href="<?php echo site_url('event/view/'. $hall_id .'/'. EVENT_APPOINT .'/'. AGE_GROUP_PRIMARY); ?>" class="col-md-2 btn btn-primary navlink">Previous</a> 
 	
 </div>	
 	

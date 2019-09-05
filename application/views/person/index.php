@@ -28,7 +28,8 @@
 		<td><?php echo $c['email']; ?></td>
 		<td><?php echo $c['mobile']; ?></td>
 		<td>
-            <a href="<?php echo site_url('person/edit/'.$c['people_id']); ?>" class="btn btn-info btn-xs">Edit</a> 
+			<a href="<?php echo site_url('event_person/view/'.$c['people_id']); ?>" class="btn btn-success btn-xs">View</a> 
+			<a href="<?php echo site_url('person/edit/'.$c['people_id']); ?>" class="btn btn-info btn-xs">Edit</a> 
 						<?php if($auth_level > 4){
 							echo '<a href="' . site_url('person/remove/' . $c['people_id']) . '" class="btn btn-danger btn-xs">Delete</a>';
 						}?>

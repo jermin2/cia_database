@@ -2,34 +2,34 @@
 	
 	<div class="form-group row">
 		<label for="event_name" class="col-md-2 control-label">Name</label>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<input type="text" name="event_name" value="<?php echo ($this->input->post('event_name') ? $this->input->post('event_name') : $event['event_name']); ?>" class="form-control" id="event_name" />
 		</div>
 	</div>
 	<div class="form-group row">
 		<label for="date" class="col-md-2 control-label">Date</label>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<input type="datetime-local" name="date" value="<?php echo ($this->input->post('datetime') ? $this->input->post('datetime') : $event['datetime']); ?>" class="form-control" id="date" />
 		</div>
 	</div>
 	<div class="form-group row">
 		<label for="location" class="col-md-2 control-label">Location</label>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<input type="text" name="location" value="<?php echo ($this->input->post('location') ? $this->input->post('location') : $event['location']); ?>" class="form-control" id="location" />
 		</div>
 	</div>
 	<div class="row form-group">
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<a href="#eventAdvmenu" data-toggle="collapse" aria-expanded="false" class="data-toggle" >Advanced Options</a>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<button type="submit" class="btn btn-success">Save</button>
 		</div>
 	</div>
 	<div id="eventAdvmenu" class="collapse">
 		<div class="form-group row">
 			<label for="event_type_id" class="col-md-2 control-label">Event Type</label>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<select name="event_type_id_sel" class="form-control" disabled="disabled">
 					<option value="">select event type</option>
 					<?php 
@@ -46,7 +46,7 @@
 		</div>
 		<div class="form-group row">
 			<label for="category_id" class="col-md-2 control-label">Category</label>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<select name="category_id_sel" class="form-control" disabled="disabled">
 					<option value="">select category</option>
 					<?php 
@@ -64,7 +64,7 @@
 		</div>
 		<div class="form-group row">
 			<label for="hall" class="col-md-2 control-label">Hall</label>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<select name="hall_id_sel" class="form-control" disabled="disabled">
 					<option value="">select hall</option>
 					<?php 
@@ -81,7 +81,7 @@
 		</div>
 		<div class="form-group row">
 			<label for="comments" class="col-md-2 control-label">Comments</label>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<input type="text" name="comments" value="<?php echo ($this->input->post('comments') ? $this->input->post('comments') : $event['comments']); ?>" class="form-control" id="comments" />
 			</div>
 		</div>

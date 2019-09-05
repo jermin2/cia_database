@@ -61,7 +61,7 @@ class Event extends MY_Controller{
 			{	
 				$this->Event_model->set_hall_id($hall_id);
 				$this->Event_model->set_event_type_id($event_type_id);
-				$this->Event_model->category_id($category_id);
+				$this->Event_model->set_category_id($category_id);
         $data['events'] = $this->Event_model->get_events_by_options();
         
         $data['_view'] = 'event/index';

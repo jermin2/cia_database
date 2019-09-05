@@ -25,7 +25,7 @@
 
 
 	<!-- Custom style for this template -->
-	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=1" rel="stylesheet">
+	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=2" rel="stylesheet">
 	
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -38,10 +38,6 @@
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Church in Auckland</a>
-	<button type="button" id="sidebarCollapse" class="btn btn-info left">
-			<i class="fas fa-align-left"></i>
-			<span>Toggle Sidebar</span>
-	</button>
 	<ul class="navbar-nav px-3">
 		<li class="nav-item text-nowrap">
 			<a class="nav-link" href="/auth/logout">Sign out</a>
