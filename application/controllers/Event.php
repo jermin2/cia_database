@@ -124,7 +124,7 @@ class Event extends MY_Controller{
 					'event_type_id' => $event_data['event_type_id'],
 					'category_id' => $event_data['category_id'],
 					'hall_id' => $event_data['hall_id'],
-					'event_name' => "testing repeat", //date_create('now')->format('Y-m-d') ,
+					'event_name' => $event_data['event_name'], //date_create('now')->format('Y-m-d') ,
 					'date' => date_create('now')->format('Y-m-d H:i:s') ,
 					'location' => "",
 					'comments' => "",
@@ -135,9 +135,6 @@ class Event extends MY_Controller{
 				////Get the event_people_ids 
 				$this->load->model('Event_person_model');
 				$event_person_data = $this->Event_person_model->get_event_person_by_event_id($event_id);
-				
-				ChromePhp::log($event_id);
-				ChromePhp::log($event_person_data);
 				
 				//add them to the new event
 				foreach($event_person_data as $event_person)
@@ -163,7 +160,7 @@ class Event extends MY_Controller{
     {
 			$logged_in_id = 1;
 
-			if( $this->require_role('admin') )
+			if( $this->verify_min_level(4) )
 			{	
 				$params = array(
 				'event_type_id' => $event_type_id,
@@ -248,7 +245,7 @@ class Event extends MY_Controller{
      */
     function edit($event_id)
     {
-			if( $this->require_role('admin') )
+			if( $this->verify_min_level(4) )
 			{	
         // check if the event exists before trying to edit it
         $data['event'] = $this->Event_model->get_event($event_id);
@@ -328,12 +325,9 @@ class Event extends MY_Controller{
      */
     function remove($event_id)
     {
-			if( $this->require_role('admin') )
+			if( $this->verify_min_level(5) )
 			{	
-
-						ChromePhp::log(date_default_timezone_get());
-						$now = new DateTime();
-				ChromePhp::log($now);		
+				$now = new DateTime();	
 				
 				//Remove all attendence related to this event first
 				$attendence = $this->Event_person_model->get_event_person_by_event_id($event_id);
