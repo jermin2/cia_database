@@ -4,7 +4,6 @@
 	<meta charset = "utf-8">
 	<title>Church in Auckland Database</title> 	
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel = "stylesheet" type = "text/css" 
 		href = "<?php echo asset_url(); ?>css/bootstrap.min.css?version=1"> 
 	<script type = 'text/javascript' src = "<?php echo asset_url(); 
@@ -21,7 +20,7 @@
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
 	<!-- jQuery Custom Scroller CDN -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
