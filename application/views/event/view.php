@@ -45,7 +45,6 @@
     <tr>
 		<td><?php echo $c['full_name']; ?></td>
 		<td><input type="hidden" name="attended[]" value="<?php echo ($c['attended'] )?>" class="form-control" id="attended"  readonly/>
-		        <a href="#" class="btn btn-xs <?php echo ($c['registered']==1 ? 'btn-success' : 'btn-secondary' )?>">Reg</a> 
 						<a href="#" class="btn btn-xs <?php echo ($c['attended']==1 ? 'btn-success' : 'btn-secondary' )?>">Atten</a>
 		</td>
     </tr>
