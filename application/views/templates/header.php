@@ -25,6 +25,9 @@
 	<!-- jQuery Custom Scroller CDN -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+	<!-- Swiping Gestures -->
+	<script src="<?php echo asset_url(); ?>js/hammer.min.js"></script>
+
 
 	<!-- Custom style for this template -->
 	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=9" rel="stylesheet">
@@ -47,23 +50,3 @@
 	</ul>
 </nav>
 
-<script>
-$(document).ready(function () {
-
-    $("#sidebar").mCustomScrollbar({
-         theme: "minimal"
-    });
-
-    $('#sidebarCollapse').on('click', function () {
-        // open or close navbar
-        $('#sidebar').toggleClass('active');
-				$('#content').toggleClass('active');
-        // close dropdowns
-        $('.collapse.in').toggleClass('in');
-        // and also adjust aria-expanded attributes we use for the open/closed arrows
-        // in our CSS
-        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-    });
-
-});
-</script>
