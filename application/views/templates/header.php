@@ -27,7 +27,7 @@
 
 
 	<!-- Custom style for this template -->
-	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=8" rel="stylesheet">
+	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=9" rel="stylesheet">
 	
 	<!-- Scrollbar Custom CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
