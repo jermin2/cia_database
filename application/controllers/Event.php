@@ -297,27 +297,6 @@ class Event extends MY_Controller{
 
 						$this->Event_model->update_event($event_id,$params); 
 						
-ChromePhp::log("test");
-ChromePhp::log($_POST);
-ChromePhp::log("help");
-ChromePhp::log($_POST['event_people_id']);
-						$event_people_id = $_POST['event_people_id'];
-						$registered = $_POST['registered'];
-						$attended = $_POST['attended'];
-						$paid = $_POST['paid'];
-						$comment = $_POST['comment'];
-					
-						foreach($event_people_id as $key => $id)
-						{
-							$event_params = array(
-								'registered' => $registered[$key],
-								'attended' => $attended[$key],
-								'paid' => $paid[$key],
-								'comment' => $comment[$key],
-							);						
-							
-							$this->Event_person_model->update_event_person($id,$event_params);  
-						}					
 						redirect('event/index');
 					}
 					else
