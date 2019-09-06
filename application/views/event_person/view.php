@@ -5,15 +5,15 @@
     <tr >
 		<th>Event Name</th>
 		<th>Date</th>
-		<th>Location</th>
+		<th class="hide-small">Location</th>
 		<th>Event Type</th>
 		<th>Attendence</th>
     </tr>
 	<?php foreach($event_people as $c){ ?>
     <tr>
 		<td><a href="/event/view_by_id/<?php echo $c['event_id'] ?>"><?php echo $c['event_name']; ?></a></td>
-		<td><?php echo $c['date']; ?></td>
-		<td><?php echo $c['location']; ?></td>
+		<td><?php echo date("d/m/y", strtotime($c['date'])); ?></td>
+		<td class="hide-small"><?php echo $c['location']; ?></td>
 		<td><?php echo $c['event_type']; ?></td>
 		<td>
 				

@@ -38,7 +38,7 @@ class Person_model extends CI_Model
 				
 		function get_people()
 		{
-			$this->db->select('people_id, (first_name + " " + last_name) as full_name, first_name, last_name, gender, age_group_name, email, hall_name, mobile');
+			$this->db->select('people_id, (first_name + " " + last_name) as full_name, first_name, last_name, gender, age_group_name, email, hall_name, cia12_people.hall_id, mobile');
 			$this->db->from('cia12_people');
 			$this->db->from('cia12_age_group');
 			$this->db->where('cia12_people.age_group_id = cia12_age_group.age_group_id');	
