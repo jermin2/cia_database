@@ -183,10 +183,10 @@ class Event extends MY_Controller{
      */
     function quick_add($hall_id, $event_type_id, $category_id)
     {
-			$logged_in_id = 1;
-
 			if( $this->verify_min_level(4) )
 			{	
+				$logged_in_id = $this->profile_data['people_id'] ;
+								
 				$params = array(
 				'event_type_id' => $event_type_id,
 				'category_id' => $category_id,
