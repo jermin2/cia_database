@@ -18,7 +18,7 @@ class Event extends MY_Controller{
      */
     function index()
     {
-			if( $this->verify_min_level(4) )
+			if( $this->require_min_level(4) )
 			{	
 		
 				if( $this->auth_level == 9 ){
@@ -99,7 +99,7 @@ class Event extends MY_Controller{
      */
     function add()
     {
-			if( $this->require_role('admin') )
+			if( $this->require_min_level(5) )
 			{	
         if(isset($_POST) && count($_POST) > 0)     
         {   
@@ -209,17 +209,28 @@ class Event extends MY_Controller{
 				//Add people in this category to the event
 				$this->load->model('Person_model');
 				$this->Person_model->set_age_group($category_id);
-				$this->Person_model->set_hall_id($hall_id);
+			
+			
+				
+				//If its campus, then don't be limited by Hall
+				if($category_id != AGE_GROUP_CAMPUS)
+				{
+					$this->Person_model->set_hall_id($hall_id);
+				}
 				$people_list = $this->Person_model->get_people();
 				
-				foreach($people_list as $person)
+				//If its an appointment, don't need add everyone.
+				if($event_type_id != EVENT_APPOINT)
 				{
-					$params = array(
-						'people_id' => $person['people_id'],
-						'event_id' => $event_id,
-            );		
-						
-					$event_people_id = $this->Event_person_model->add_event_person($params);
+					foreach($people_list as $person)
+					{
+						$params = array(
+							'people_id' => $person['people_id'],
+							'event_id' => $event_id,
+							);		
+							
+						$event_people_id = $this->Event_person_model->add_event_person($params);
+					}
 				}
 
 				redirect('event/edit/'.$event_id);
