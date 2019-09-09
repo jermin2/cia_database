@@ -1,22 +1,19 @@
+<input class="form-control" id="myInput" type="text" placeholder="Search for a person..">
+<br/>
 
-
-<div class="pull-right">
-	<?php if($auth_level > 4){
-		echo '<a href="' . site_url('person/add') . '" class="btn btn-success">Add</a> ';
-	}?>
-	
-</div>
-
-<table class="table table-striped table-bordered">
+<table class="table table-sm table-striped table-bordered">
+	<thead>
     <tr>
 		<th>Full Name</th>
 		<th class="hide-small">Gender</th>
-		<th>Age Group Id</th>
+		<th>Age Group</th>
 		<th>Hall</th>
 		<th class="hide-small">Email</th>
 		<th class="hide-small">Mobile</th>
 		<th>Actions</th>
     </tr>
+	</thead>
+	<tbody id="myTable">
 	<?php foreach($people as $c){ ?>
     <tr>
 		<td><a href="<?php echo site_url('person/edit/'.$c['people_id']); ?>"><?php echo $c['first_name']." ".$c['last_name']; ?></a></td>
@@ -34,4 +31,16 @@
         </td>
     </tr>
 	<?php } ?>
+	</tbody>
 </table>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

@@ -106,7 +106,7 @@
 		<input id="people_id" type="text" name="people_id" hidden="hidden" >
 	</div>
 
-<table id="attendenceTable" class="table table-striped table-bordered" >
+<table id="attendenceTable" class="table table-sm table-striped table-bordered" >
     <tr >
 		<th>Name</th>
 		<th>Actions</th>

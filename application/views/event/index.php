@@ -2,7 +2,7 @@
 	<a href="<?php echo site_url('event/add'); ?>" class="btn btn-success">Add</a> 
 </div>
 
-<table class="table table-striped table-bordered">
+<table class="table table-sm table-striped table-bordered">
     <tr>
 		<th>Name</th>
 		<th class="hide-small">Event Type Id</th>
@@ -29,7 +29,7 @@
 		<td><?php echo date("d/m h:m", strtotime($c['date'])); ?></td>
 		<td><?php echo $c['location']; ?></td>
 		<td>
-						<a href="<?php echo site_url('event/duplicate/'.$c['event_id']); ?>" class="btn btn-info btn-xs">Repeat</a> 
+						<a href="<?php echo site_url('event/duplicate/'.$c['event_id']); ?>" class="btn btn-success btn-xs">Repeat</a> 
             <a href="<?php echo site_url('event/edit/'.$c['event_id']); ?>" class="btn btn-info btn-xs">Edit</a> 
             <?php if($auth_level >= 5)
 						{

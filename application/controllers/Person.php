@@ -68,7 +68,12 @@ class Person extends MY_Controller{
 		function view_by_age_group($age_group){
 			if( $this->verify_min_level(4))
 			{
-				$this->Person_model->set_hall_id($this->profile_data['hall_id']);
+				
+				//If it's campus, show all the campus
+				if($age_group != AGE_GROUP_CAMPUS){
+					$this->Person_model->set_hall_id($this->profile_data['hall_id']);
+				}				
+				
 				$this->Person_model->set_age_group($age_group);
         $data['people'] = $this->Person_model->get_people();
 				
