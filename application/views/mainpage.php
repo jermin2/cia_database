@@ -20,4 +20,7 @@
 	</div>
 </div>
 </div>
+
+<!-- Dark Overlay element -->
+<div class="overlay active"></div>
 <!-- <?php $this->load->view('templates/footer'); ?> -->
