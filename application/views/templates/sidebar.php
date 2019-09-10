@@ -55,7 +55,7 @@
 					echo '
 				<li class="active">
 					
-					<a href="#peopleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-align-left"></i> test People</a>
+					<a href="#peopleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">People</a>
 					<ul class="collapse list-unstyled" id="peopleSubmenu">';
 					
 					if($auth_level > 4)
