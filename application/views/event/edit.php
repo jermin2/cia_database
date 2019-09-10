@@ -98,6 +98,7 @@
 			<br />
 		</label>
 	</div>
+	
 	<div class="form-group row">
 		<label for="autocomplete" class="col-md-3 control-label">Add a person</label>
 		<div class="col-md-4">

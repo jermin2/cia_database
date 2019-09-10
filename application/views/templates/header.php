@@ -44,6 +44,9 @@
 	<link href= "<?php echo asset_url(); ?>css/jquery.mCustomScrollbar.min.css" rel="stylesheet">
 	<link href= "<?php echo asset_url(); ?>css/jquery-ui.min.css" rel="stylesheet">
 	
+	<!-- Icons -->
+	<script src="https://kit.fontawesome.com/yourcode.js"></script>
+	
 </head>
 <body>
 

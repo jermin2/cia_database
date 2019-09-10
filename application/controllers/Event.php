@@ -326,7 +326,8 @@ class Event extends MY_Controller{
 						
 						$this->load->model('Person_model');
 						
-						$this->Person_model->set_hall_id( $this->profile_data['hall_id']);
+						//Limit the "add a person" list to a hall - lets let all the names appear
+						//$this->Person_model->set_hall_id( $this->profile_data['hall_id']);
 						$namelist = $this->Person_model->get_people_namelist();
 						$data['namelist'] = $namelist;
 
