@@ -22,5 +22,5 @@
 </div>
 
 <!-- Dark Overlay element -->
-<div class="overlay active"></div>
+<div class="overlay"></div>
 <!-- <?php $this->load->view('templates/footer'); ?> -->
