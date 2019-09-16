@@ -1,8 +1,6 @@
 <?php	$this->load->view('templates/header'); ?>
-<div class="container-fluid">
-<div class="row">
 
-<div class="wrapper">
+<div class="wrapper container-fluid">
 	<!-- HERE comes side bar -->
 	<?php $this->load->view('templates/sidebar'); ?>
 
@@ -18,9 +16,13 @@
 		<?php $data['_view'] = $_view; ?>
 		<?php $this->load->view('templates/maincontent', $data) ?>
 	</div>
-</div>
+
+
+	<!-- Dark Overlay element -->
+	<div class="overlay" id="overlay"></div>
+
 </div>
 
-<!-- Dark Overlay element -->
-<div class="overlay" id="overlay"></div>
  <?php $this->load->view('templates/footer'); ?>
+ 
+ 
