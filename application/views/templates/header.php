@@ -36,13 +36,13 @@
 
 
 	<!-- Custom style for this template -->
-	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=1" rel="stylesheet">
+	<link href= "<?php echo asset_url(); ?>css/sidebar.css?version=2" rel="stylesheet">
 	
 	<!-- Scrollbar Custom CSS -->
 	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
 	<link href= "<?php echo asset_url(); ?>css/jquery.mCustomScrollbar.min.css" rel="stylesheet">
-	<link href= "<?php echo asset_url(); ?>css/jquery-ui.min.css" rel="stylesheet">
+	<link href= "<?php echo asset_url(); ?>css/jquery-ui.css" rel="stylesheet">
 	
 	<!-- Icons -->
 	<script src="https://kit.fontawesome.com/yourcode.js"></script>

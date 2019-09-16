@@ -133,6 +133,8 @@ hammertime.on('panleft', function(ev) {
 	toggleSidebar();
 });
 
+
+
 function toggleSidebar() {
 	        // open or close navbar
         $('#sidebar').toggleClass('active');
