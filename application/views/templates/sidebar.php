@@ -147,6 +147,9 @@ function toggleSidebar() {
 				
 				// fade in the overlay
         $('.overlay').toggleClass('active');
+				
+				//Disable the scroll
+				$("body").toggleClass("disable-scroll");
 	
 }
 
