@@ -130,7 +130,7 @@
 
 var hammertime = new Hammer(sidebar);
 hammertime.on('panleft', function(ev) {
-	toggleSidebar();
+	//toggleSidebar();
 });
 
 
