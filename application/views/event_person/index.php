@@ -2,7 +2,7 @@
 	<a href="<?php echo site_url('event_person/add'); ?>" class="btn btn-success">Add</a> 
 </div>
 
-<table class="table table-striped table-bordered" >
+<table class="table table-sm table-striped table-bordered" >
     <tr >
 		<th>Full Name</th>
 		<th>Event Name</th>

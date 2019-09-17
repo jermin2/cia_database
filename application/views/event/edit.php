@@ -24,6 +24,10 @@
 		</div>
 		<div class="col-md-6">
 			<button type="submit" class="btn btn-success">Save</button>
+						<?php if($auth_level >= 5)
+			{
+				echo '<a href="'.site_url('event/remove/'.$c['event_id']).'" class="btn btn-danger btn-xs">Delete</a>';
+			}?>
 		</div>
 	</div>
 	<div id="eventAdvmenu" class="collapse">

@@ -105,8 +105,12 @@ else
 	<div class="form-group row">
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Save</button>
-        </div>
+		</div>
+		<?php if($auth_level > 4){
+							echo '<a href="' . site_url('person/remove/' . $person['people_id']) . '" class="btn btn-danger btn-xs">Delete</a>';
+						}?>
 	</div>
+							
 	
 <?php echo form_close(); ?>
 

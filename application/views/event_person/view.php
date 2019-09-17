@@ -1,7 +1,7 @@
 <h2 class="h2 text-center">Attendence</h2>
 <h3 class="h3 text-center"><?php echo $person['first_name']." ".$person['last_name']; ?></h3>
 
-<table class="table table-striped table-bordered" >
+<table class="table table-sm table-striped table-bordered" >
     <tr >
 		<th>Event Name</th>
 		<th>Date</th>
