@@ -16,9 +16,12 @@
 	<script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	-->
+
+	
 	<script src="<?php echo asset_url(); ?>js/jquery.min.js"></script>
 	<script src="<?php echo asset_url(); ?>js/popper.min.js"></script>
 	<script src="<?php echo asset_url(); ?>js/bootstrap.min.js"></script>
+	
 	<script src="<?php echo asset_url(); ?>js/jquery-1.12.4.js"></script>
 	<script src="<?php echo asset_url(); ?>js/jquery-ui.js"></script>
 	
@@ -43,6 +46,15 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> -->
 	<link href= "<?php echo asset_url(); ?>css/jquery.mCustomScrollbar.min.css" rel="stylesheet">
 	<link href= "<?php echo asset_url(); ?>css/jquery-ui.css" rel="stylesheet">
+	
+	
+		
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.13/js/dataTables.bootstrap4.min.js"></script>
+	
+	
+	
 	
 	<!-- Icons -->
 	<script src="https://kit.fontawesome.com/yourcode.js"></script>

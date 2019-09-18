@@ -2,20 +2,22 @@
 	<a href="<?php echo site_url('event/add'); ?>" class="btn btn-success">Add</a> 
 </div>
 
-<table class="table table-sm table-striped table-bordered">
+<table id="eventTable" class="table table-sm table-striped table-bordered">
+	<thead>
     <tr>
-		<th>Name</th>
-		<th class="hide-small">Event Type</th>
-		<th class="hide-small">Category</th>
-		
-		<?php if($auth_level > 4){
-			echo '<th>Hall</th>';
-		}	?>
-		
-		<th>Date</th>
-		<th>Location</th>
-		<th>Actions</th>
+			<th class="th-sm">Name</th>
+			<th class="hide-small">Event Type</th>
+			<th class="hide-small">Category</th>
+			
+			<?php if($auth_level > 4){
+				echo '<th>Hall</th>';
+			}	?>
+			
+			<th>Date</th>
+			<th>Location</th>
+			<th>Actions</th>
     </tr>
+	</thead>
 	<?php foreach($events as $c){ ?>
     <tr>
 		<td><u><a href="<?php echo site_url('event/edit/'.$c['event_id']); ?>"><?php echo $c['event_name']; ?></a></u></td>
@@ -35,3 +37,11 @@
     </tr>
 	<?php } ?>
 </table>
+
+<script>
+$(document).ready(function () {
+	$('#eventTable').DataTable();
+	$('.dataTables_length').addClass('bs-select');
+	console.log("testtest");
+});
+</script>

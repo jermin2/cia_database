@@ -258,8 +258,18 @@ class Person extends MY_Controller{
         // check if the person exists before trying to delete it
         if(isset($person['people_id']))
         {
-            $this->Person_model->delete_person($people_id);
-            redirect('person/index');
+					
+					$this->load->model('Event_person_model');
+					//Check if the person has attended any events and delete their attendence first
+					$attendence = $this->Event_person_model->get_event_person_by_person_id($people_id);
+					ChromePhp::log($attendence);
+					foreach($attendence as $attend)
+					{
+						$this->Event_person_model->delete_event_person($attend['event_people_id']);
+					}
+					
+					$this->Person_model->delete_person($people_id);
+					redirect('person/index');
         }
         else
             show_error('The person you are trying to delete does not exist.');

@@ -106,11 +106,23 @@ else
 		<div class="col-sm-offset-4 col-sm-8">
 			<button type="submit" class="btn btn-success">Save</button>
 		</div>
-		<?php if($auth_level > 4){
-							echo '<a href="' . site_url('person/remove/' . $person['people_id']) . '" class="btn btn-danger btn-xs">Delete</a>';
-						}?>
+		<?php 
+				echo '<a href="#" onclick="confirmDelete()" class="btn btn-danger btn-xs">Delete</a>'
+		?>				
+						
 	</div>
 							
 	
 <?php echo form_close(); ?>
 
+<script>
+
+function confirmDelete(){
+	var r = confirm("This will delete all records of this person and cannot be undone!");
+	if (r == true) {
+		window.location.href = "<?php echo site_url('person/remove/' . $person['people_id']) ?> ";
+	}
+	
+}
+
+</script>
